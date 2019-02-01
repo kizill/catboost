@@ -30,12 +30,6 @@ PEERDIR(
     contrib/python/pandas
 )
 
-IF(NOT CATBOOST_OPENSOURCE)
-    PEERDIR(
-        catboost//libs/for_python_package
-    )
-ENDIF()
-
 SRCS(catboost/python-package/catboost/helpers.cpp)
 
 IF(HAVE_CUDA)

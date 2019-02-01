@@ -13,12 +13,6 @@ RECURSE(
     tools
 )
 
-IF (NOT CATBOOST_OPENSOURCE)
-RECURSE(
-    
-)
-ENDIF()
-
 IF (HAVE_CUDA)
 RECURSE(
     cuda

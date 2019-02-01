@@ -51,14 +51,7 @@ ENDIF()
 
 GENERATE_ENUM_SERIALIZATION(model_metainfo_helpers.h)
 
-IF(CATBOOST_OPENSOURCE)
     NO_GPL()
-ELSE()
-    PEERDIR(
-        catboost//libs/for_app
-    )
-ENDIF()
-
 ALLOCATOR(LF)
 
 END()
