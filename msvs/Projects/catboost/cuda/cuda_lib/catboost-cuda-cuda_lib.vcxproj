@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build" ToolsVersion="4.0">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|x64">
@@ -18,18 +18,23 @@
     <LatestTargetPlatformVersion>$([Microsoft.Build.Utilities.ToolLocationHelper]::GetLatestSDKTargetPlatformVersion('Windows', '10.0'))</LatestTargetPlatformVersion>
     <WindowsTargetPlatformVersion>$(LatestTargetPlatformVersion)</WindowsTargetPlatformVersion>
   </PropertyGroup>
-  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.default.props"/>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.default.props" />
   <PropertyGroup Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseOfMfc>false</UseOfMfc>
     <CharacterSet>Multibyte</CharacterSet>
     <PlatformToolset>v141</PlatformToolset>
   </PropertyGroup>
-  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props"/>
-  <ImportGroup Label="ArcadiaProps"/>
-  <ImportGroup Label="ExtensionSettings"/>
-  <ImportGroup Label="PropertySheets"/>
-  <PropertyGroup Label="UserMacros"/>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ArcadiaProps" />
+  <ImportGroup Label="ExtensionSettings" />
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="..\..\..\..\..\_inculde_cuda.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="..\..\..\..\..\_inculde_cuda.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
@@ -60,9 +65,9 @@
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">/nologo /Zm500 /GR /bigobj /FC /EHs /errorReport:prompt /Zc:inline /DFAKEID=5020880 /we4013 /w14018 /w14265 /w14296 /w14431 /wd4127 /wd4200 /wd4201 /wd4351 /wd4355 /wd4503 /wd4510 /wd4511 /wd4512 /wd4554 /wd4610 /wd4706 /wd4800 /wd4996 /wd4714 /wd4197 /wd4245 /wd4324 /wd5033 /FD /MP /Ob0 /Od /D_DEBUG /MTd /Zi /FS /DWIN32 /D_WIN32 /D_WINDOWS /D_CRT_SECURE_NO_WARNINGS /D_CRT_NONSTDC_NO_WARNINGS /D_USE_MATH_DEFINES /D__STDC_CONSTANT_MACROS /D__STDC_FORMAT_MACROS /D_USING_V110_SDK71_ /D_LIBCPP_ENABLE_CXX17_REMOVED_FEATURES /D_WIN64 /DWIN64 /D_WIN32_WINNT=0x0601 /D_MBCS /DSSE_ENABLED=1 /DSSE3_ENABLED=1 /DSSSE3_ENABLED=1 -DCATBOOST_OPENSOURCE=yes -D_LIBCPP_VASPRINTF_DEFINED -D_WCHAR_H_CPLUSPLUS_98_CONFORMANCE_ "-I$(CUDA_PATH)/include" /DY_UCRT_INCLUDE="$(UniversalCRT_IncludePath.Split(';')[0].Replace('\','/'))" /DY_MSVC_INCLUDE="$(VC_VC_IncludePath.Split(';')[0].Replace('\','/'))" /DSTRICT /DNOMINMAX /DWIN32_LEAN_AND_MEAN /D__SSE2__=1 /D__SSE3__=1 /D__SSSE3__=1  /std:c++17 -DCATBOOST_OPENSOURCE=yes</AdditionalOptions>
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|x64'">/nologo /Zm500 /GR /bigobj /FC /EHs /errorReport:prompt /Zc:inline /DFAKEID=5020880 /we4013 /w14018 /w14265 /w14296 /w14431 /wd4127 /wd4200 /wd4201 /wd4351 /wd4355 /wd4503 /wd4510 /wd4511 /wd4512 /wd4554 /wd4610 /wd4706 /wd4800 /wd4996 /wd4714 /wd4197 /wd4245 /wd4324 /wd5033 /FD /MP /Ox /Ob2 /Oi /DNDEBUG /MT /Zi /FS /DWIN32 /D_WIN32 /D_WINDOWS /D_CRT_SECURE_NO_WARNINGS /D_CRT_NONSTDC_NO_WARNINGS /D_USE_MATH_DEFINES /D__STDC_CONSTANT_MACROS /D__STDC_FORMAT_MACROS /D_USING_V110_SDK71_ /D_LIBCPP_ENABLE_CXX17_REMOVED_FEATURES /D_WIN64 /DWIN64 /D_WIN32_WINNT=0x0601 /D_MBCS /DSSE_ENABLED=1 /DSSE3_ENABLED=1 /DSSSE3_ENABLED=1 -DCATBOOST_OPENSOURCE=yes -D_LIBCPP_VASPRINTF_DEFINED -D_WCHAR_H_CPLUSPLUS_98_CONFORMANCE_ "-I$(CUDA_PATH)/include" /DY_UCRT_INCLUDE="$(UniversalCRT_IncludePath.Split(';')[0].Replace('\','/'))" /DY_MSVC_INCLUDE="$(VC_VC_IncludePath.Split(';')[0].Replace('\','/'))" /DSTRICT /DNOMINMAX /DWIN32_LEAN_AND_MEAN /D__SSE2__=1 /D__SSE3__=1 /D__SSSE3__=1  /std:c++17 -DCATBOOST_OPENSOURCE=yes</AdditionalOptions>
       <WarningLevel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Level4</WarningLevel>
-      <RemoveUnreferencedCodeData Condition="'$(Configuration)|$(Platform)'=='Debug|x64'"/>
+      <RemoveUnreferencedCodeData Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" />
       <WarningLevel Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Level4</WarningLevel>
-      <RemoveUnreferencedCodeData Condition="'$(Configuration)|$(Platform)'=='Release|x64'"/>
+      <RemoveUnreferencedCodeData Condition="'$(Configuration)|$(Platform)'=='Release|x64'" />
       <AdditionalIncludeDirectories>;$(SolutionDir)$(Configuration);$(SolutionDir)..;$(SolutionDir)../contrib/libs/cxxsupp/libcxx/include;$(SolutionDir)../contrib/libs/double-conversion/include;$(SolutionDir)../contrib/libs/brotli/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
@@ -78,45 +83,45 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_lib\cache.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_lib\cuda_base.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_lib\cuda_buffer.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_lib\cuda_buffer_helpers\buffer_resharding.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_lib\cuda_buffer_helpers\reduce_scatter.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_lib\cuda_events_provider.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_lib\cuda_kernel_buffer.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_lib\cuda_manager.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_lib\cuda_profiler.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_lib\device_id.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_lib\device_provider.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_lib\devices_list.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_lib\future\local_promise_future.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_lib\future\mpi_promise_future.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_lib\future\promise_factory.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_lib\fwd.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_lib\gpu_single_worker.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_lib\hwloc_wrapper.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_lib\inter_device_stream_section.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_lib\mapping.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_lib\memory_copy_performance.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_lib\memory_pool\stack_like_memory_pool.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_lib\mpi\mpi_manager.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_lib\serialization\task_factory.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_lib\single_device.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_lib\stream_section_tasks_launcher.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_lib\task.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_lib\tasks_impl\cpu_func.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_lib\tasks_impl\enable_peers.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_lib\tasks_impl\host_tasks.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_lib\tasks_impl\kernel_task.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_lib\tasks_impl\memory_allocation.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_lib\tasks_impl\memory_copy_tasks.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_lib\tasks_impl\memory_state_func.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_lib\tasks_impl\request_stream_task.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_lib\tasks_impl\stream_section_task.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_lib\tasks_queue\mpi_task_queue.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_lib\tasks_queue\single_host_task_queue.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_lib\worker_state.cpp"/>
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_lib\cache.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_lib\cuda_base.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_lib\cuda_buffer.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_lib\cuda_buffer_helpers\buffer_resharding.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_lib\cuda_buffer_helpers\reduce_scatter.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_lib\cuda_events_provider.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_lib\cuda_kernel_buffer.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_lib\cuda_manager.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_lib\cuda_profiler.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_lib\device_id.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_lib\device_provider.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_lib\devices_list.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_lib\future\local_promise_future.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_lib\future\mpi_promise_future.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_lib\future\promise_factory.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_lib\fwd.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_lib\gpu_single_worker.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_lib\hwloc_wrapper.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_lib\inter_device_stream_section.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_lib\mapping.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_lib\memory_copy_performance.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_lib\memory_pool\stack_like_memory_pool.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_lib\mpi\mpi_manager.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_lib\serialization\task_factory.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_lib\single_device.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_lib\stream_section_tasks_launcher.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_lib\task.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_lib\tasks_impl\cpu_func.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_lib\tasks_impl\enable_peers.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_lib\tasks_impl\host_tasks.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_lib\tasks_impl\kernel_task.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_lib\tasks_impl\memory_allocation.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_lib\tasks_impl\memory_copy_tasks.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_lib\tasks_impl\memory_state_func.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_lib\tasks_impl\request_stream_task.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_lib\tasks_impl\stream_section_task.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_lib\tasks_queue\mpi_task_queue.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_lib\tasks_queue\single_host_task_queue.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_lib\worker_state.cpp" />
     <CustomBuild Include="$(SolutionDir)..\build\scripts\compile_cuda.py">
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
 cd /d $(SolutionDir)$(Configuration)\catboost\cuda\cuda_lib
@@ -160,64 +165,64 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs>$(SolutionDir)..\build\scripts\compile_cuda.py;$(SolutionDir)..\catboost\cuda\cuda_lib\kernel\arch.cu;$(SolutionDir)..\catboost\cuda\cuda_lib\kernel\kernel.cu;$(SolutionDir)..\catboost\cuda\cuda_lib\kernel\reduce.cu;</AdditionalInputs>
       <Outputs>$(SolutionDir)$(Configuration)\catboost\cuda\cuda_lib\kernel\arch.cu.obj;$(SolutionDir)$(Configuration)\catboost\cuda\cuda_lib\kernel\kernel.cu.obj;$(SolutionDir)$(Configuration)\catboost\cuda\cuda_lib\kernel\reduce.cu.obj;</Outputs>
     </CustomBuild>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\cache.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\column_aligment_helper.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\cpu_reducers.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\cuda_base.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\cuda_buffer.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\cuda_buffer_helpers\all_reduce.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\cuda_buffer_helpers\buffer_reader.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\cuda_buffer_helpers\buffer_resharding.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\cuda_buffer_helpers\buffer_writer.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\cuda_buffer_helpers\reduce_scatter.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\cuda_events_provider.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\cuda_kernel_buffer.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\cuda_manager.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\cuda_profiler.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\device_id.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\device_subtasks_helper.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\devices_list.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\devices_provider.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\future\future.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\future\local_promise_future.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\future\mpi_promise_future.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\future\promise_factory.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\fwd.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\gpu_single_worker.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\helpers.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\hwloc_wrapper.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\inter_device_stream_section.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\kernel.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\mapping.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\memory_copy_performance.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\memory_pool\cuda_malloc_wrapper.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\memory_pool\stack_like_memory_pool.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\memory_provider_trait.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\mpi\mpi_manager.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\peer_devices.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\read_and_write_helpers.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\remote_objects.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\serialization\task_factory.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\single_device.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\slice.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\stream_section_tasks_launcher.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\task.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\tasks_impl\cpu_func.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\tasks_impl\enable_peers.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\tasks_impl\host_tasks.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\tasks_impl\kernel_task.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\tasks_impl\memory_allocation.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\tasks_impl\memory_copy_staged_operation.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\tasks_impl\memory_copy_tasks.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\tasks_impl\memory_state_func.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\tasks_impl\request_stream_task.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\tasks_impl\stream_section_task.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\tasks_queue\mpi_task_queue.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\tasks_queue\single_host_task_queue.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\worker_state.h"/>
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\cache.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\column_aligment_helper.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\cpu_reducers.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\cuda_base.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\cuda_buffer.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\cuda_buffer_helpers\all_reduce.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\cuda_buffer_helpers\buffer_reader.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\cuda_buffer_helpers\buffer_resharding.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\cuda_buffer_helpers\buffer_writer.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\cuda_buffer_helpers\reduce_scatter.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\cuda_events_provider.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\cuda_kernel_buffer.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\cuda_manager.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\cuda_profiler.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\device_id.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\device_subtasks_helper.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\devices_list.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\devices_provider.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\future\future.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\future\local_promise_future.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\future\mpi_promise_future.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\future\promise_factory.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\fwd.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\gpu_single_worker.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\helpers.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\hwloc_wrapper.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\inter_device_stream_section.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\kernel.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\mapping.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\memory_copy_performance.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\memory_pool\cuda_malloc_wrapper.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\memory_pool\stack_like_memory_pool.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\memory_provider_trait.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\mpi\mpi_manager.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\peer_devices.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\read_and_write_helpers.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\remote_objects.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\serialization\task_factory.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\single_device.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\slice.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\stream_section_tasks_launcher.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\task.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\tasks_impl\cpu_func.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\tasks_impl\enable_peers.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\tasks_impl\host_tasks.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\tasks_impl\kernel_task.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\tasks_impl\memory_allocation.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\tasks_impl\memory_copy_staged_operation.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\tasks_impl\memory_copy_tasks.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\tasks_impl\memory_state_func.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\tasks_impl\request_stream_task.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\tasks_impl\stream_section_task.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\tasks_queue\mpi_task_queue.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\tasks_queue\single_host_task_queue.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_lib\worker_state.h" />
   </ItemGroup>
-  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets"/>
-  <ImportGroup Label="ExtensionTargets"/>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets" />
   <ItemGroup>
     <ProjectReference Include="$(SolutionDir)Projects\build\platform\cuda\build-platform-cuda.vcxproj">
       <Project>{18ED0C1C-3127-4315-3368-E63B97EFA8F1}</Project>
@@ -390,5 +395,13 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ProjectReference Include="$(SolutionDir)Projects\util\yutil.vcxproj">
       <Project>{1C91E826-1D2A-B4DB-C1D2-F89E49E9BDCD}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\..\..\catboost\cuda\cuda_lib\kernel\arch.cu" />
+    <None Include="..\..\..\..\..\catboost\cuda\cuda_lib\kernel\arch.cuh" />
+    <None Include="..\..\..\..\..\catboost\cuda\cuda_lib\kernel\kernel.cu" />
+    <None Include="..\..\..\..\..\catboost\cuda\cuda_lib\kernel\kernel.cuh" />
+    <None Include="..\..\..\..\..\catboost\cuda\cuda_lib\kernel\reduce.cu" />
+    <None Include="..\..\..\..\..\catboost\cuda\cuda_lib\kernel\reduce.cuh" />
   </ItemGroup>
 </Project>

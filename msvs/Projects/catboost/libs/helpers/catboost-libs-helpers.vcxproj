@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build" ToolsVersion="4.0">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|x64">
@@ -18,18 +18,23 @@
     <LatestTargetPlatformVersion>$([Microsoft.Build.Utilities.ToolLocationHelper]::GetLatestSDKTargetPlatformVersion('Windows', '10.0'))</LatestTargetPlatformVersion>
     <WindowsTargetPlatformVersion>$(LatestTargetPlatformVersion)</WindowsTargetPlatformVersion>
   </PropertyGroup>
-  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.default.props"/>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.default.props" />
   <PropertyGroup Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseOfMfc>false</UseOfMfc>
     <CharacterSet>Multibyte</CharacterSet>
     <PlatformToolset>v141</PlatformToolset>
   </PropertyGroup>
-  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props"/>
-  <ImportGroup Label="ArcadiaProps"/>
-  <ImportGroup Label="ExtensionSettings"/>
-  <ImportGroup Label="PropertySheets"/>
-  <PropertyGroup Label="UserMacros"/>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ArcadiaProps" />
+  <ImportGroup Label="ExtensionSettings" />
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="..\..\..\..\..\_inculde_cuda.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="..\..\..\..\..\_inculde_cuda.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
@@ -60,9 +65,9 @@
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">/nologo /Zm500 /GR /bigobj /FC /EHs /errorReport:prompt /Zc:inline /DFAKEID=5020880 /we4013 /w14018 /w14265 /w14296 /w14431 /wd4127 /wd4200 /wd4201 /wd4351 /wd4355 /wd4503 /wd4510 /wd4511 /wd4512 /wd4554 /wd4610 /wd4706 /wd4800 /wd4996 /wd4714 /wd4197 /wd4245 /wd4324 /wd5033 /FD /MP /Ob0 /Od /D_DEBUG /MTd /Zi /FS /DWIN32 /D_WIN32 /D_WINDOWS /D_CRT_SECURE_NO_WARNINGS /D_CRT_NONSTDC_NO_WARNINGS /D_USE_MATH_DEFINES /D__STDC_CONSTANT_MACROS /D__STDC_FORMAT_MACROS /D_USING_V110_SDK71_ /D_LIBCPP_ENABLE_CXX17_REMOVED_FEATURES /D_WIN64 /DWIN64 /D_WIN32_WINNT=0x0601 /D_MBCS /DSSE_ENABLED=1 /DSSE3_ENABLED=1 /DSSSE3_ENABLED=1 -DCATBOOST_OPENSOURCE=yes -D_LIBCPP_VASPRINTF_DEFINED -D_WCHAR_H_CPLUSPLUS_98_CONFORMANCE_ /DY_UCRT_INCLUDE="$(UniversalCRT_IncludePath.Split(';')[0].Replace('\','/'))" /DY_MSVC_INCLUDE="$(VC_VC_IncludePath.Split(';')[0].Replace('\','/'))" /DSTRICT /DNOMINMAX /DWIN32_LEAN_AND_MEAN /D__SSE2__=1 /D__SSE3__=1 /D__SSSE3__=1  /std:c++17 -DCATBOOST_OPENSOURCE=yes</AdditionalOptions>
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|x64'">/nologo /Zm500 /GR /bigobj /FC /EHs /errorReport:prompt /Zc:inline /DFAKEID=5020880 /we4013 /w14018 /w14265 /w14296 /w14431 /wd4127 /wd4200 /wd4201 /wd4351 /wd4355 /wd4503 /wd4510 /wd4511 /wd4512 /wd4554 /wd4610 /wd4706 /wd4800 /wd4996 /wd4714 /wd4197 /wd4245 /wd4324 /wd5033 /FD /MP /Ox /Ob2 /Oi /DNDEBUG /MT /Zi /FS /DWIN32 /D_WIN32 /D_WINDOWS /D_CRT_SECURE_NO_WARNINGS /D_CRT_NONSTDC_NO_WARNINGS /D_USE_MATH_DEFINES /D__STDC_CONSTANT_MACROS /D__STDC_FORMAT_MACROS /D_USING_V110_SDK71_ /D_LIBCPP_ENABLE_CXX17_REMOVED_FEATURES /D_WIN64 /DWIN64 /D_WIN32_WINNT=0x0601 /D_MBCS /DSSE_ENABLED=1 /DSSE3_ENABLED=1 /DSSSE3_ENABLED=1 -DCATBOOST_OPENSOURCE=yes -D_LIBCPP_VASPRINTF_DEFINED -D_WCHAR_H_CPLUSPLUS_98_CONFORMANCE_ /DY_UCRT_INCLUDE="$(UniversalCRT_IncludePath.Split(';')[0].Replace('\','/'))" /DY_MSVC_INCLUDE="$(VC_VC_IncludePath.Split(';')[0].Replace('\','/'))" /DSTRICT /DNOMINMAX /DWIN32_LEAN_AND_MEAN /D__SSE2__=1 /D__SSE3__=1 /D__SSSE3__=1  /std:c++17 -DCATBOOST_OPENSOURCE=yes</AdditionalOptions>
       <WarningLevel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Level4</WarningLevel>
-      <RemoveUnreferencedCodeData Condition="'$(Configuration)|$(Platform)'=='Debug|x64'"/>
+      <RemoveUnreferencedCodeData Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" />
       <WarningLevel Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Level4</WarningLevel>
-      <RemoveUnreferencedCodeData Condition="'$(Configuration)|$(Platform)'=='Release|x64'"/>
+      <RemoveUnreferencedCodeData Condition="'$(Configuration)|$(Platform)'=='Release|x64'" />
       <AdditionalIncludeDirectories>;$(SolutionDir)$(Configuration);$(SolutionDir)..;$(SolutionDir)../contrib/libs/cxxsupp/libcxx/include;$(SolutionDir)../contrib/libs/double-conversion/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
@@ -78,78 +83,78 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="$(SolutionDir)..\catboost\libs\helpers\array_subset.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\libs\helpers\borders_io.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\libs\helpers\checksum.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\libs\helpers\clear_array.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\libs\helpers\compare.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\libs\helpers\compression.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\libs\helpers\cpu_random.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\libs\helpers\dbg_output.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\libs\helpers\dense_hash.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\libs\helpers\dense_hash_view.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\libs\helpers\element_range.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\libs\helpers\exception.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\libs\helpers\hash.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\libs\helpers\int_cast.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\libs\helpers\interrupt.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\libs\helpers\map_merge.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\libs\helpers\math_utils.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\libs\helpers\matrix.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\libs\helpers\maybe_data.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\libs\helpers\maybe_owning_array_holder.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\libs\helpers\mem_usage.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\libs\helpers\parallel_tasks.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\libs\helpers\permutation.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\libs\helpers\power_hash.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\libs\helpers\progress_helper.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\libs\helpers\query_info_helper.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\libs\helpers\resource_constrained_executor.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\libs\helpers\resource_holder.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\libs\helpers\restorable_rng.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\libs\helpers\serialization.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\libs\helpers\set.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\libs\helpers\vec_list.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\libs\helpers\vector_helpers.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\libs\helpers\wx_test.cpp"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\libs\helpers\array_subset.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\libs\helpers\borders_io.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\libs\helpers\checksum.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\libs\helpers\clear_array.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\libs\helpers\compare.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\libs\helpers\compression.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\libs\helpers\cpu_random.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\libs\helpers\data_split.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\libs\helpers\dbg_output.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\libs\helpers\dense_hash.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\libs\helpers\dense_hash_view.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\libs\helpers\element_range.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\libs\helpers\exception.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\libs\helpers\hash.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\libs\helpers\int_cast.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\libs\helpers\interrupt.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\libs\helpers\map_merge.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\libs\helpers\math_utils.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\libs\helpers\matrix.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\libs\helpers\maybe_data.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\libs\helpers\maybe_owning_array_holder.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\libs\helpers\mem_usage.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\libs\helpers\parallel_tasks.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\libs\helpers\permutation.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\libs\helpers\power_hash.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\libs\helpers\progress_helper.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\libs\helpers\query_info_helper.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\libs\helpers\resource_constrained_executor.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\libs\helpers\resource_holder.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\libs\helpers\restorable_rng.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\libs\helpers\serialization.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\libs\helpers\set.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\libs\helpers\vec_list.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\libs\helpers\vector_helpers.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\libs\helpers\wx_test.h"/>
+    <ClCompile Include="$(SolutionDir)..\catboost\libs\helpers\array_subset.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\libs\helpers\borders_io.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\libs\helpers\checksum.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\libs\helpers\clear_array.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\libs\helpers\compare.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\libs\helpers\compression.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\libs\helpers\cpu_random.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\libs\helpers\dbg_output.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\libs\helpers\dense_hash.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\libs\helpers\dense_hash_view.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\libs\helpers\element_range.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\libs\helpers\exception.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\libs\helpers\hash.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\libs\helpers\int_cast.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\libs\helpers\interrupt.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\libs\helpers\map_merge.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\libs\helpers\math_utils.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\libs\helpers\matrix.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\libs\helpers\maybe_data.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\libs\helpers\maybe_owning_array_holder.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\libs\helpers\mem_usage.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\libs\helpers\parallel_tasks.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\libs\helpers\permutation.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\libs\helpers\power_hash.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\libs\helpers\progress_helper.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\libs\helpers\query_info_helper.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\libs\helpers\resource_constrained_executor.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\libs\helpers\resource_holder.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\libs\helpers\restorable_rng.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\libs\helpers\serialization.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\libs\helpers\set.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\libs\helpers\vec_list.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\libs\helpers\vector_helpers.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\libs\helpers\wx_test.cpp" />
+    <ClInclude Include="$(SolutionDir)..\catboost\libs\helpers\array_subset.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\libs\helpers\borders_io.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\libs\helpers\checksum.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\libs\helpers\clear_array.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\libs\helpers\compare.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\libs\helpers\compression.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\libs\helpers\cpu_random.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\libs\helpers\data_split.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\libs\helpers\dbg_output.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\libs\helpers\dense_hash.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\libs\helpers\dense_hash_view.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\libs\helpers\element_range.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\libs\helpers\exception.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\libs\helpers\hash.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\libs\helpers\int_cast.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\libs\helpers\interrupt.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\libs\helpers\map_merge.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\libs\helpers\math_utils.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\libs\helpers\matrix.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\libs\helpers\maybe_data.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\libs\helpers\maybe_owning_array_holder.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\libs\helpers\mem_usage.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\libs\helpers\parallel_tasks.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\libs\helpers\permutation.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\libs\helpers\power_hash.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\libs\helpers\progress_helper.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\libs\helpers\query_info_helper.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\libs\helpers\resource_constrained_executor.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\libs\helpers\resource_holder.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\libs\helpers\restorable_rng.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\libs\helpers\serialization.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\libs\helpers\set.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\libs\helpers\vec_list.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\libs\helpers\vector_helpers.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\libs\helpers\wx_test.h" />
   </ItemGroup>
-  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets"/>
-  <ImportGroup Label="ExtensionTargets"/>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets" />
   <ItemGroup>
     <ProjectReference Include="$(SolutionDir)Projects\catboost\libs\data_types\catboost-libs-data_types.vcxproj">
       <Project>{3750DBCB-749A-6149-7B4D-D132A7A922DA}</Project>

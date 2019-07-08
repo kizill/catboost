@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build" ToolsVersion="4.0">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|x64">
@@ -18,18 +18,23 @@
     <LatestTargetPlatformVersion>$([Microsoft.Build.Utilities.ToolLocationHelper]::GetLatestSDKTargetPlatformVersion('Windows', '10.0'))</LatestTargetPlatformVersion>
     <WindowsTargetPlatformVersion>$(LatestTargetPlatformVersion)</WindowsTargetPlatformVersion>
   </PropertyGroup>
-  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.default.props"/>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.default.props" />
   <PropertyGroup Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseOfMfc>false</UseOfMfc>
     <CharacterSet>Multibyte</CharacterSet>
     <PlatformToolset>v141</PlatformToolset>
   </PropertyGroup>
-  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props"/>
-  <ImportGroup Label="ArcadiaProps"/>
-  <ImportGroup Label="ExtensionSettings"/>
-  <ImportGroup Label="PropertySheets"/>
-  <PropertyGroup Label="UserMacros"/>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ArcadiaProps" />
+  <ImportGroup Label="ExtensionSettings" />
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="..\..\..\..\..\_inculde_cuda.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="..\..\..\..\..\_inculde_cuda.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
@@ -60,9 +65,9 @@
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">/nologo /Zm500 /GR /bigobj /FC /EHs /errorReport:prompt /Zc:inline /DFAKEID=5020880 /we4013 /w14018 /w14265 /w14296 /w14431 /wd4127 /wd4200 /wd4201 /wd4351 /wd4355 /wd4503 /wd4510 /wd4511 /wd4512 /wd4554 /wd4610 /wd4706 /wd4800 /wd4996 /wd4714 /wd4197 /wd4245 /wd4324 /wd5033 /FD /MP /Ob0 /Od /D_DEBUG /MTd /Zi /FS /DWIN32 /D_WIN32 /D_WINDOWS /D_CRT_SECURE_NO_WARNINGS /D_CRT_NONSTDC_NO_WARNINGS /D_USE_MATH_DEFINES /D__STDC_CONSTANT_MACROS /D__STDC_FORMAT_MACROS /D_USING_V110_SDK71_ /D_LIBCPP_ENABLE_CXX17_REMOVED_FEATURES /D_WIN64 /DWIN64 /D_WIN32_WINNT=0x0601 /D_MBCS /DSSE_ENABLED=1 /DSSE3_ENABLED=1 /DSSSE3_ENABLED=1 -DCATBOOST_OPENSOURCE=yes -D_LIBCPP_VASPRINTF_DEFINED -D_WCHAR_H_CPLUSPLUS_98_CONFORMANCE_ "-I$(CUDA_PATH)/include" /DY_UCRT_INCLUDE="$(UniversalCRT_IncludePath.Split(';')[0].Replace('\','/'))" /DY_MSVC_INCLUDE="$(VC_VC_IncludePath.Split(';')[0].Replace('\','/'))" /DSTRICT /DNOMINMAX /DWIN32_LEAN_AND_MEAN /D__SSE2__=1 /D__SSE3__=1 /D__SSSE3__=1  /std:c++17 -DCATBOOST_OPENSOURCE=yes</AdditionalOptions>
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|x64'">/nologo /Zm500 /GR /bigobj /FC /EHs /errorReport:prompt /Zc:inline /DFAKEID=5020880 /we4013 /w14018 /w14265 /w14296 /w14431 /wd4127 /wd4200 /wd4201 /wd4351 /wd4355 /wd4503 /wd4510 /wd4511 /wd4512 /wd4554 /wd4610 /wd4706 /wd4800 /wd4996 /wd4714 /wd4197 /wd4245 /wd4324 /wd5033 /FD /MP /Ox /Ob2 /Oi /DNDEBUG /MT /Zi /FS /DWIN32 /D_WIN32 /D_WINDOWS /D_CRT_SECURE_NO_WARNINGS /D_CRT_NONSTDC_NO_WARNINGS /D_USE_MATH_DEFINES /D__STDC_CONSTANT_MACROS /D__STDC_FORMAT_MACROS /D_USING_V110_SDK71_ /D_LIBCPP_ENABLE_CXX17_REMOVED_FEATURES /D_WIN64 /DWIN64 /D_WIN32_WINNT=0x0601 /D_MBCS /DSSE_ENABLED=1 /DSSE3_ENABLED=1 /DSSSE3_ENABLED=1 -DCATBOOST_OPENSOURCE=yes -D_LIBCPP_VASPRINTF_DEFINED -D_WCHAR_H_CPLUSPLUS_98_CONFORMANCE_ "-I$(CUDA_PATH)/include" /DY_UCRT_INCLUDE="$(UniversalCRT_IncludePath.Split(';')[0].Replace('\','/'))" /DY_MSVC_INCLUDE="$(VC_VC_IncludePath.Split(';')[0].Replace('\','/'))" /DSTRICT /DNOMINMAX /DWIN32_LEAN_AND_MEAN /D__SSE2__=1 /D__SSE3__=1 /D__SSSE3__=1  /std:c++17 -DCATBOOST_OPENSOURCE=yes</AdditionalOptions>
       <WarningLevel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Level4</WarningLevel>
-      <RemoveUnreferencedCodeData Condition="'$(Configuration)|$(Platform)'=='Debug|x64'"/>
+      <RemoveUnreferencedCodeData Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" />
       <WarningLevel Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Level4</WarningLevel>
-      <RemoveUnreferencedCodeData Condition="'$(Configuration)|$(Platform)'=='Release|x64'"/>
+      <RemoveUnreferencedCodeData Condition="'$(Configuration)|$(Platform)'=='Release|x64'" />
       <AdditionalIncludeDirectories>;$(SolutionDir)$(Configuration);$(SolutionDir)..;$(SolutionDir)../contrib/libs/cxxsupp/libcxx/include;$(SolutionDir)../contrib/libs/double-conversion/include;$(SolutionDir)../contrib/libs/brotli/include;$(SolutionDir)../contrib/libs/protobuf;$(SolutionDir)../contrib/libs/protobuf/google/protobuf;$(SolutionDir)../contrib/libs/libf2c;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
@@ -78,41 +83,41 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\methods\add_oblivious_tree_model_feature_parallel.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\methods\batch_feature_tensor_builder.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\methods\boosting_metric_calcer.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\methods\boosting_progress_tracker.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\methods\ctr_from_tensor_calcer.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\methods\feature_parallel_pointwise_oblivious_tree.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\methods\greedy_subsets_searcher\compute_by_blocks_helper.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\methods\greedy_subsets_searcher\greedy_search_helper.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\methods\greedy_subsets_searcher\model_builder.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\methods\greedy_subsets_searcher\split_points.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\methods\greedy_subsets_searcher\split_properties_helper.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\methods\helpers.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\methods\histograms_helper.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\methods\leaves_estimation\descent_helpers.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\methods\leaves_estimation\doc_parallel_leaves_estimator.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\methods\leaves_estimation\leaves_estimation_helper.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\methods\leaves_estimation\oblivious_tree_leaves_estimator.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\methods\leaves_estimation\pointwise_oracle.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\methods\leaves_estimation\step_estimator.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\methods\oblivious_tree_doc_parallel_structure_searcher.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\methods\oblivious_tree_structure_searcher.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\methods\pairwise_kernels.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\methods\pairwise_oblivious_trees\blocked_histogram_helper.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\methods\pairwise_oblivious_trees\pairwise_oblivious_tree.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\methods\pairwise_oblivious_trees\pairwise_optimization_subsets.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\methods\pairwise_oblivious_trees\pairwise_score_calcer_for_policy.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\methods\pairwise_oblivious_trees\pairwise_scores_calcer.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\methods\pairwise_oblivious_trees\pairwise_structure_searcher.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\methods\pointwise_kernels.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\methods\pointwise_optimization_subsets.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\methods\pointwise_score_calcer.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\methods\serialization_helper.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\methods\tree_ctr_datasets_visitor.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\methods\tree_ctrs.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\methods\tree_ctrs_dataset.cpp"/>
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\methods\add_oblivious_tree_model_feature_parallel.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\methods\batch_feature_tensor_builder.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\methods\boosting_metric_calcer.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\methods\boosting_progress_tracker.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\methods\ctr_from_tensor_calcer.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\methods\feature_parallel_pointwise_oblivious_tree.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\methods\greedy_subsets_searcher\compute_by_blocks_helper.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\methods\greedy_subsets_searcher\greedy_search_helper.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\methods\greedy_subsets_searcher\model_builder.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\methods\greedy_subsets_searcher\split_points.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\methods\greedy_subsets_searcher\split_properties_helper.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\methods\helpers.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\methods\histograms_helper.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\methods\leaves_estimation\descent_helpers.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\methods\leaves_estimation\doc_parallel_leaves_estimator.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\methods\leaves_estimation\leaves_estimation_helper.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\methods\leaves_estimation\oblivious_tree_leaves_estimator.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\methods\leaves_estimation\pointwise_oracle.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\methods\leaves_estimation\step_estimator.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\methods\oblivious_tree_doc_parallel_structure_searcher.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\methods\oblivious_tree_structure_searcher.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\methods\pairwise_kernels.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\methods\pairwise_oblivious_trees\blocked_histogram_helper.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\methods\pairwise_oblivious_trees\pairwise_oblivious_tree.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\methods\pairwise_oblivious_trees\pairwise_optimization_subsets.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\methods\pairwise_oblivious_trees\pairwise_score_calcer_for_policy.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\methods\pairwise_oblivious_trees\pairwise_scores_calcer.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\methods\pairwise_oblivious_trees\pairwise_structure_searcher.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\methods\pointwise_kernels.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\methods\pointwise_optimization_subsets.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\methods\pointwise_score_calcer.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\methods\serialization_helper.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\methods\tree_ctr_datasets_visitor.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\methods\tree_ctrs.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\methods\tree_ctrs_dataset.cpp" />
     <CustomBuild Include="$(SolutionDir)..\build\scripts\compile_cuda.py">
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
 cd /d $(SolutionDir)$(Configuration)\catboost\cuda\methods
@@ -396,66 +401,66 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs>$(SolutionDir)..\build\scripts\compile_cuda.py;$(SolutionDir)..\catboost\cuda\methods\greedy_subsets_searcher\kernel\compute_scores.cu;$(SolutionDir)..\catboost\cuda\methods\greedy_subsets_searcher\kernel\gather_bins.cu;$(SolutionDir)..\catboost\cuda\methods\greedy_subsets_searcher\kernel\hist.cu;$(SolutionDir)..\catboost\cuda\methods\greedy_subsets_searcher\kernel\hist_2_one_byte_5bit.cu;$(SolutionDir)..\catboost\cuda\methods\greedy_subsets_searcher\kernel\hist_2_one_byte_6bit.cu;$(SolutionDir)..\catboost\cuda\methods\greedy_subsets_searcher\kernel\hist_2_one_byte_7bit.cu;$(SolutionDir)..\catboost\cuda\methods\greedy_subsets_searcher\kernel\hist_binary.cu;$(SolutionDir)..\catboost\cuda\methods\greedy_subsets_searcher\kernel\hist_half_byte.cu;$(SolutionDir)..\catboost\cuda\methods\greedy_subsets_searcher\kernel\hist_one_byte.cu;$(SolutionDir)..\catboost\cuda\methods\greedy_subsets_searcher\kernel\histogram_utils.cu;$(SolutionDir)..\catboost\cuda\methods\greedy_subsets_searcher\kernel\split_points.cu;$(SolutionDir)..\catboost\cuda\methods\kernel\linear_solver.cu;$(SolutionDir)..\catboost\cuda\methods\kernel\pairwise_hist.cu;$(SolutionDir)..\catboost\cuda\methods\kernel\pairwise_hist_binary.cu;$(SolutionDir)..\catboost\cuda\methods\kernel\pairwise_hist_half_byte.cu;$(SolutionDir)..\catboost\cuda\methods\kernel\pairwise_hist_one_byte_5bit.cu;$(SolutionDir)..\catboost\cuda\methods\kernel\pairwise_hist_one_byte_5bit_one_hot.cu;$(SolutionDir)..\catboost\cuda\methods\kernel\pairwise_hist_one_byte_6bit.cu;$(SolutionDir)..\catboost\cuda\methods\kernel\pairwise_hist_one_byte_6bit_one_hot.cu;$(SolutionDir)..\catboost\cuda\methods\kernel\pairwise_hist_one_byte_7bit.cu;$(SolutionDir)..\catboost\cuda\methods\kernel\pairwise_hist_one_byte_7bit_one_hot.cu;$(SolutionDir)..\catboost\cuda\methods\kernel\pairwise_hist_one_byte_8bit_atomics.cu;$(SolutionDir)..\catboost\cuda\methods\kernel\pairwise_hist_one_byte_8bit_atomics_one_hot.cu;$(SolutionDir)..\catboost\cuda\methods\kernel\pointwise_hist1.cu;$(SolutionDir)..\catboost\cuda\methods\kernel\pointwise_hist2.cu;$(SolutionDir)..\catboost\cuda\methods\kernel\pointwise_hist2_binary.cu;$(SolutionDir)..\catboost\cuda\methods\kernel\pointwise_hist2_half_byte.cu;$(SolutionDir)..\catboost\cuda\methods\kernel\pointwise_hist2_one_byte_5bit.cu;$(SolutionDir)..\catboost\cuda\methods\kernel\pointwise_hist2_one_byte_6bit.cu;$(SolutionDir)..\catboost\cuda\methods\kernel\pointwise_hist2_one_byte_7bit.cu;$(SolutionDir)..\catboost\cuda\methods\kernel\pointwise_hist2_one_byte_8bit.cu;$(SolutionDir)..\catboost\cuda\methods\kernel\pointwise_scores.cu;$(SolutionDir)..\catboost\cuda\methods\kernel\split_pairwise.cu;</AdditionalInputs>
       <Outputs>$(SolutionDir)$(Configuration)\catboost\cuda\methods\greedy_subsets_searcher\kernel\compute_scores.cu.obj;$(SolutionDir)$(Configuration)\catboost\cuda\methods\greedy_subsets_searcher\kernel\gather_bins.cu.obj;$(SolutionDir)$(Configuration)\catboost\cuda\methods\greedy_subsets_searcher\kernel\hist.cu.obj;$(SolutionDir)$(Configuration)\catboost\cuda\methods\greedy_subsets_searcher\kernel\hist_2_one_byte_5bit.cu.obj;$(SolutionDir)$(Configuration)\catboost\cuda\methods\greedy_subsets_searcher\kernel\hist_2_one_byte_6bit.cu.obj;$(SolutionDir)$(Configuration)\catboost\cuda\methods\greedy_subsets_searcher\kernel\hist_2_one_byte_7bit.cu.obj;$(SolutionDir)$(Configuration)\catboost\cuda\methods\greedy_subsets_searcher\kernel\hist_binary.cu.obj;$(SolutionDir)$(Configuration)\catboost\cuda\methods\greedy_subsets_searcher\kernel\hist_half_byte.cu.obj;$(SolutionDir)$(Configuration)\catboost\cuda\methods\greedy_subsets_searcher\kernel\hist_one_byte.cu.obj;$(SolutionDir)$(Configuration)\catboost\cuda\methods\greedy_subsets_searcher\kernel\histogram_utils.cu.obj;$(SolutionDir)$(Configuration)\catboost\cuda\methods\greedy_subsets_searcher\kernel\split_points.cu.obj;$(SolutionDir)$(Configuration)\catboost\cuda\methods\kernel\linear_solver.cu.obj;$(SolutionDir)$(Configuration)\catboost\cuda\methods\kernel\pairwise_hist.cu.obj;$(SolutionDir)$(Configuration)\catboost\cuda\methods\kernel\pairwise_hist_binary.cu.obj;$(SolutionDir)$(Configuration)\catboost\cuda\methods\kernel\pairwise_hist_half_byte.cu.obj;$(SolutionDir)$(Configuration)\catboost\cuda\methods\kernel\pairwise_hist_one_byte_5bit.cu.obj;$(SolutionDir)$(Configuration)\catboost\cuda\methods\kernel\pairwise_hist_one_byte_5bit_one_hot.cu.obj;$(SolutionDir)$(Configuration)\catboost\cuda\methods\kernel\pairwise_hist_one_byte_6bit.cu.obj;$(SolutionDir)$(Configuration)\catboost\cuda\methods\kernel\pairwise_hist_one_byte_6bit_one_hot.cu.obj;$(SolutionDir)$(Configuration)\catboost\cuda\methods\kernel\pairwise_hist_one_byte_7bit.cu.obj;$(SolutionDir)$(Configuration)\catboost\cuda\methods\kernel\pairwise_hist_one_byte_7bit_one_hot.cu.obj;$(SolutionDir)$(Configuration)\catboost\cuda\methods\kernel\pairwise_hist_one_byte_8bit_atomics.cu.obj;$(SolutionDir)$(Configuration)\catboost\cuda\methods\kernel\pairwise_hist_one_byte_8bit_atomics_one_hot.cu.obj;$(SolutionDir)$(Configuration)\catboost\cuda\methods\kernel\pointwise_hist1.cu.obj;$(SolutionDir)$(Configuration)\catboost\cuda\methods\kernel\pointwise_hist2.cu.obj;$(SolutionDir)$(Configuration)\catboost\cuda\methods\kernel\pointwise_hist2_binary.cu.obj;$(SolutionDir)$(Configuration)\catboost\cuda\methods\kernel\pointwise_hist2_half_byte.cu.obj;$(SolutionDir)$(Configuration)\catboost\cuda\methods\kernel\pointwise_hist2_one_byte_5bit.cu.obj;$(SolutionDir)$(Configuration)\catboost\cuda\methods\kernel\pointwise_hist2_one_byte_6bit.cu.obj;$(SolutionDir)$(Configuration)\catboost\cuda\methods\kernel\pointwise_hist2_one_byte_7bit.cu.obj;$(SolutionDir)$(Configuration)\catboost\cuda\methods\kernel\pointwise_hist2_one_byte_8bit.cu.obj;$(SolutionDir)$(Configuration)\catboost\cuda\methods\kernel\pointwise_scores.cu.obj;$(SolutionDir)$(Configuration)\catboost\cuda\methods\kernel\split_pairwise.cu.obj;</Outputs>
     </CustomBuild>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\add_oblivious_tree_model_feature_parallel.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\approx_helper.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\batch_feature_tensor_builder.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\boosting_metric_calcer.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\boosting_progress_tracker.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\ctr_from_tensor_calcer.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\doc_parallel_boosting.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\doc_parallel_boosting_progress.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\doc_parallel_pointwise_oblivious_tree.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\dynamic_boosting.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\dynamic_boosting_progress.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\feature_parallel_pointwise_oblivious_tree.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\greedy_subsets_searcher.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\greedy_subsets_searcher\compute_by_blocks_helper.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\greedy_subsets_searcher\configs.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\greedy_subsets_searcher\greedy_search_helper.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\greedy_subsets_searcher\model_builder.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\greedy_subsets_searcher\split_points.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\greedy_subsets_searcher\split_properties_helper.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\greedy_subsets_searcher\structure_searcher_options.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\greedy_subsets_searcher\structure_searcher_template.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\greedy_subsets_searcher\weak_objective_impl.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\helpers.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\histograms_helper.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\learning_rate.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\leaves_estimation\descent_helpers.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\leaves_estimation\doc_parallel_leaves_estimator.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\leaves_estimation\groupwise_oracle.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\leaves_estimation\leaves_estimation_config.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\leaves_estimation\leaves_estimation_factory.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\leaves_estimation\leaves_estimation_helper.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\leaves_estimation\matrix_per_tree_oracle_base.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\leaves_estimation\oblivious_tree_leaves_estimator.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\leaves_estimation\oracle_interface.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\leaves_estimation\pairwise_oracle.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\leaves_estimation\pointwise_oracle.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\leaves_estimation\step_estimator.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\oblivious_tree_doc_parallel_structure_searcher.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\oblivious_tree_structure_searcher.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\pairwise_kernels.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\pairwise_oblivious_trees\blocked_histogram_helper.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\pairwise_oblivious_trees\pairwise_oblivious_tree.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\pairwise_oblivious_trees\pairwise_optimization_subsets.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\pairwise_oblivious_trees\pairwise_score_calcer_for_policy.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\pairwise_oblivious_trees\pairwise_scores_calcer.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\pairwise_oblivious_trees\pairwise_structure_searcher.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\pointwise_kernels.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\pointwise_optimization_subsets.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\pointwise_scores_calcer.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\random_score_helper.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\serialization_helper.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\stripe_target_wrapper.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\tree_ctr_datasets_visitor.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\tree_ctr_memory_usage_estimator.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\tree_ctrs.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\tree_ctrs_dataset.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\weak_target_helpers.h"/>
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\add_oblivious_tree_model_feature_parallel.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\approx_helper.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\batch_feature_tensor_builder.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\boosting_metric_calcer.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\boosting_progress_tracker.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\ctr_from_tensor_calcer.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\doc_parallel_boosting.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\doc_parallel_boosting_progress.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\doc_parallel_pointwise_oblivious_tree.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\dynamic_boosting.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\dynamic_boosting_progress.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\feature_parallel_pointwise_oblivious_tree.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\greedy_subsets_searcher.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\greedy_subsets_searcher\compute_by_blocks_helper.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\greedy_subsets_searcher\configs.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\greedy_subsets_searcher\greedy_search_helper.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\greedy_subsets_searcher\model_builder.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\greedy_subsets_searcher\split_points.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\greedy_subsets_searcher\split_properties_helper.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\greedy_subsets_searcher\structure_searcher_options.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\greedy_subsets_searcher\structure_searcher_template.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\greedy_subsets_searcher\weak_objective_impl.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\helpers.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\histograms_helper.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\learning_rate.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\leaves_estimation\descent_helpers.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\leaves_estimation\doc_parallel_leaves_estimator.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\leaves_estimation\groupwise_oracle.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\leaves_estimation\leaves_estimation_config.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\leaves_estimation\leaves_estimation_factory.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\leaves_estimation\leaves_estimation_helper.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\leaves_estimation\matrix_per_tree_oracle_base.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\leaves_estimation\oblivious_tree_leaves_estimator.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\leaves_estimation\oracle_interface.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\leaves_estimation\pairwise_oracle.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\leaves_estimation\pointwise_oracle.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\leaves_estimation\step_estimator.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\oblivious_tree_doc_parallel_structure_searcher.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\oblivious_tree_structure_searcher.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\pairwise_kernels.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\pairwise_oblivious_trees\blocked_histogram_helper.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\pairwise_oblivious_trees\pairwise_oblivious_tree.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\pairwise_oblivious_trees\pairwise_optimization_subsets.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\pairwise_oblivious_trees\pairwise_score_calcer_for_policy.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\pairwise_oblivious_trees\pairwise_scores_calcer.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\pairwise_oblivious_trees\pairwise_structure_searcher.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\pointwise_kernels.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\pointwise_optimization_subsets.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\pointwise_scores_calcer.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\random_score_helper.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\serialization_helper.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\stripe_target_wrapper.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\tree_ctr_datasets_visitor.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\tree_ctr_memory_usage_estimator.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\tree_ctrs.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\tree_ctrs_dataset.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\methods\weak_target_helpers.h" />
   </ItemGroup>
-  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets"/>
-  <ImportGroup Label="ExtensionTargets"/>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets" />
   <ItemGroup>
     <ProjectReference Include="$(SolutionDir)Projects\build\platform\cuda\build-platform-cuda.vcxproj">
       <Project>{18ED0C1C-3127-4315-3368-E63B97EFA8F1}</Project>
@@ -805,5 +810,68 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ProjectReference Include="$(SolutionDir)Projects\util\yutil.vcxproj">
       <Project>{1C91E826-1D2A-B4DB-C1D2-F89E49E9BDCD}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\..\..\catboost\cuda\methods\greedy_subsets_searcher\kernel\compute_hist_loop_one_stat.cuh" />
+    <None Include="..\..\..\..\..\catboost\cuda\methods\greedy_subsets_searcher\kernel\compute_hist_loop_two_stats.cuh" />
+    <None Include="..\..\..\..\..\catboost\cuda\methods\greedy_subsets_searcher\kernel\compute_scores.cu" />
+    <None Include="..\..\..\..\..\catboost\cuda\methods\greedy_subsets_searcher\kernel\compute_scores.cuh" />
+    <None Include="..\..\..\..\..\catboost\cuda\methods\greedy_subsets_searcher\kernel\gather_bins.cu" />
+    <None Include="..\..\..\..\..\catboost\cuda\methods\greedy_subsets_searcher\kernel\gather_bins.cuh" />
+    <None Include="..\..\..\..\..\catboost\cuda\methods\greedy_subsets_searcher\kernel\hist.cu" />
+    <None Include="..\..\..\..\..\catboost\cuda\methods\greedy_subsets_searcher\kernel\hist.cuh" />
+    <None Include="..\..\..\..\..\catboost\cuda\methods\greedy_subsets_searcher\kernel\histogram_utils.cu" />
+    <None Include="..\..\..\..\..\catboost\cuda\methods\greedy_subsets_searcher\kernel\histogram_utils.cuh" />
+    <None Include="..\..\..\..\..\catboost\cuda\methods\greedy_subsets_searcher\kernel\hist_2_one_byte_5bit.cu" />
+    <None Include="..\..\..\..\..\catboost\cuda\methods\greedy_subsets_searcher\kernel\hist_2_one_byte_6bit.cu" />
+    <None Include="..\..\..\..\..\catboost\cuda\methods\greedy_subsets_searcher\kernel\hist_2_one_byte_7bit.cu" />
+    <None Include="..\..\..\..\..\catboost\cuda\methods\greedy_subsets_searcher\kernel\hist_2_one_byte_base.cuh" />
+    <None Include="..\..\..\..\..\catboost\cuda\methods\greedy_subsets_searcher\kernel\hist_binary.cu" />
+    <None Include="..\..\..\..\..\catboost\cuda\methods\greedy_subsets_searcher\kernel\hist_half_byte.cu" />
+    <None Include="..\..\..\..\..\catboost\cuda\methods\greedy_subsets_searcher\kernel\hist_one_byte.cu" />
+    <None Include="..\..\..\..\..\catboost\cuda\methods\greedy_subsets_searcher\kernel\hist_single_leaf.cuh" />
+    <None Include="..\..\..\..\..\catboost\cuda\methods\greedy_subsets_searcher\kernel\point_hist_half_byte_template.cuh" />
+    <None Include="..\..\..\..\..\catboost\cuda\methods\greedy_subsets_searcher\kernel\split_points.cu" />
+    <None Include="..\..\..\..\..\catboost\cuda\methods\greedy_subsets_searcher\kernel\split_points.cuh" />
+    <None Include="..\..\..\..\..\catboost\cuda\methods\greedy_subsets_searcher\kernel\tuning_policy_enums.cuh" />
+    <None Include="..\..\..\..\..\catboost\cuda\methods\kernel\compute_pair_hist_loop.cuh" />
+    <None Include="..\..\..\..\..\catboost\cuda\methods\kernel\compute_point_hist2_loop.cuh" />
+    <None Include="..\..\..\..\..\catboost\cuda\methods\kernel\linear_solver.cu" />
+    <None Include="..\..\..\..\..\catboost\cuda\methods\kernel\linear_solver.cuh" />
+    <None Include="..\..\..\..\..\catboost\cuda\methods\kernel\pair.cuh" />
+    <None Include="..\..\..\..\..\catboost\cuda\methods\kernel\pairwise_hist.cu" />
+    <None Include="..\..\..\..\..\catboost\cuda\methods\kernel\pairwise_hist.cuh" />
+    <None Include="..\..\..\..\..\catboost\cuda\methods\kernel\pairwise_hist_binary.cu" />
+    <None Include="..\..\..\..\..\catboost\cuda\methods\kernel\pairwise_hist_half_byte.cu" />
+    <None Include="..\..\..\..\..\catboost\cuda\methods\kernel\pairwise_hist_one_byte_5bit.cu" />
+    <None Include="..\..\..\..\..\catboost\cuda\methods\kernel\pairwise_hist_one_byte_5bit.cuh" />
+    <None Include="..\..\..\..\..\catboost\cuda\methods\kernel\pairwise_hist_one_byte_5bit_one_hot.cu" />
+    <None Include="..\..\..\..\..\catboost\cuda\methods\kernel\pairwise_hist_one_byte_6bit.cu" />
+    <None Include="..\..\..\..\..\catboost\cuda\methods\kernel\pairwise_hist_one_byte_6bit.cuh" />
+    <None Include="..\..\..\..\..\catboost\cuda\methods\kernel\pairwise_hist_one_byte_6bit_one_hot.cu" />
+    <None Include="..\..\..\..\..\catboost\cuda\methods\kernel\pairwise_hist_one_byte_7bit.cu" />
+    <None Include="..\..\..\..\..\catboost\cuda\methods\kernel\pairwise_hist_one_byte_7bit.cuh" />
+    <None Include="..\..\..\..\..\catboost\cuda\methods\kernel\pairwise_hist_one_byte_7bit_one_hot.cu" />
+    <None Include="..\..\..\..\..\catboost\cuda\methods\kernel\pairwise_hist_one_byte_8bit_atomics.cu" />
+    <None Include="..\..\..\..\..\catboost\cuda\methods\kernel\pairwise_hist_one_byte_8bit_atomics.cuh" />
+    <None Include="..\..\..\..\..\catboost\cuda\methods\kernel\pairwise_hist_one_byte_8bit_atomics_one_hot.cu" />
+    <None Include="..\..\..\..\..\catboost\cuda\methods\kernel\pointwise_hist1.cu" />
+    <None Include="..\..\..\..\..\catboost\cuda\methods\kernel\pointwise_hist1.cuh" />
+    <None Include="..\..\..\..\..\catboost\cuda\methods\kernel\pointwise_hist2.cu" />
+    <None Include="..\..\..\..\..\catboost\cuda\methods\kernel\pointwise_hist2.cuh" />
+    <None Include="..\..\..\..\..\catboost\cuda\methods\kernel\pointwise_hist2_binary.cu" />
+    <None Include="..\..\..\..\..\catboost\cuda\methods\kernel\pointwise_hist2_half_byte.cu" />
+    <None Include="..\..\..\..\..\catboost\cuda\methods\kernel\pointwise_hist2_half_byte_template.cuh" />
+    <None Include="..\..\..\..\..\catboost\cuda\methods\kernel\pointwise_hist2_one_byte_5bit.cu" />
+    <None Include="..\..\..\..\..\catboost\cuda\methods\kernel\pointwise_hist2_one_byte_6bit.cu" />
+    <None Include="..\..\..\..\..\catboost\cuda\methods\kernel\pointwise_hist2_one_byte_7bit.cu" />
+    <None Include="..\..\..\..\..\catboost\cuda\methods\kernel\pointwise_hist2_one_byte_8bit.cu" />
+    <None Include="..\..\..\..\..\catboost\cuda\methods\kernel\pointwise_hist2_one_byte_templ.cuh" />
+    <None Include="..\..\..\..\..\catboost\cuda\methods\kernel\pointwise_scores.cu" />
+    <None Include="..\..\..\..\..\catboost\cuda\methods\kernel\pointwise_scores.cuh" />
+    <None Include="..\..\..\..\..\catboost\cuda\methods\kernel\score_calcers.cuh" />
+    <None Include="..\..\..\..\..\catboost\cuda\methods\kernel\split_pairwise.cu" />
+    <None Include="..\..\..\..\..\catboost\cuda\methods\kernel\split_pairwise.cuh" />
+    <None Include="..\..\..\..\..\catboost\cuda\methods\kernel\split_properties_helpers.cuh" />
   </ItemGroup>
 </Project>

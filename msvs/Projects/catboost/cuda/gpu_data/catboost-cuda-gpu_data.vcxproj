@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build" ToolsVersion="4.0">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|x64">
@@ -18,18 +18,23 @@
     <LatestTargetPlatformVersion>$([Microsoft.Build.Utilities.ToolLocationHelper]::GetLatestSDKTargetPlatformVersion('Windows', '10.0'))</LatestTargetPlatformVersion>
     <WindowsTargetPlatformVersion>$(LatestTargetPlatformVersion)</WindowsTargetPlatformVersion>
   </PropertyGroup>
-  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.default.props"/>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.default.props" />
   <PropertyGroup Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseOfMfc>false</UseOfMfc>
     <CharacterSet>Multibyte</CharacterSet>
     <PlatformToolset>v141</PlatformToolset>
   </PropertyGroup>
-  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props"/>
-  <ImportGroup Label="ArcadiaProps"/>
-  <ImportGroup Label="ExtensionSettings"/>
-  <ImportGroup Label="PropertySheets"/>
-  <PropertyGroup Label="UserMacros"/>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ArcadiaProps" />
+  <ImportGroup Label="ExtensionSettings" />
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="..\..\..\..\..\_inculde_cuda.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="..\..\..\..\..\_inculde_cuda.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
@@ -60,9 +65,9 @@
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">/nologo /Zm500 /GR /bigobj /FC /EHs /errorReport:prompt /Zc:inline /DFAKEID=5020880 /we4013 /w14018 /w14265 /w14296 /w14431 /wd4127 /wd4200 /wd4201 /wd4351 /wd4355 /wd4503 /wd4510 /wd4511 /wd4512 /wd4554 /wd4610 /wd4706 /wd4800 /wd4996 /wd4714 /wd4197 /wd4245 /wd4324 /wd5033 /FD /MP /Ob0 /Od /D_DEBUG /MTd /Zi /FS /DWIN32 /D_WIN32 /D_WINDOWS /D_CRT_SECURE_NO_WARNINGS /D_CRT_NONSTDC_NO_WARNINGS /D_USE_MATH_DEFINES /D__STDC_CONSTANT_MACROS /D__STDC_FORMAT_MACROS /D_USING_V110_SDK71_ /D_LIBCPP_ENABLE_CXX17_REMOVED_FEATURES /D_WIN64 /DWIN64 /D_WIN32_WINNT=0x0601 /D_MBCS /DSSE_ENABLED=1 /DSSE3_ENABLED=1 /DSSSE3_ENABLED=1 -DCATBOOST_OPENSOURCE=yes -D_LIBCPP_VASPRINTF_DEFINED -D_WCHAR_H_CPLUSPLUS_98_CONFORMANCE_ "-I$(CUDA_PATH)/include" /DY_UCRT_INCLUDE="$(UniversalCRT_IncludePath.Split(';')[0].Replace('\','/'))" /DY_MSVC_INCLUDE="$(VC_VC_IncludePath.Split(';')[0].Replace('\','/'))" /DSTRICT /DNOMINMAX /DWIN32_LEAN_AND_MEAN /D__SSE2__=1 /D__SSE3__=1 /D__SSSE3__=1  /std:c++17 -DCATBOOST_OPENSOURCE=yes</AdditionalOptions>
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|x64'">/nologo /Zm500 /GR /bigobj /FC /EHs /errorReport:prompt /Zc:inline /DFAKEID=5020880 /we4013 /w14018 /w14265 /w14296 /w14431 /wd4127 /wd4200 /wd4201 /wd4351 /wd4355 /wd4503 /wd4510 /wd4511 /wd4512 /wd4554 /wd4610 /wd4706 /wd4800 /wd4996 /wd4714 /wd4197 /wd4245 /wd4324 /wd5033 /FD /MP /Ox /Ob2 /Oi /DNDEBUG /MT /Zi /FS /DWIN32 /D_WIN32 /D_WINDOWS /D_CRT_SECURE_NO_WARNINGS /D_CRT_NONSTDC_NO_WARNINGS /D_USE_MATH_DEFINES /D__STDC_CONSTANT_MACROS /D__STDC_FORMAT_MACROS /D_USING_V110_SDK71_ /D_LIBCPP_ENABLE_CXX17_REMOVED_FEATURES /D_WIN64 /DWIN64 /D_WIN32_WINNT=0x0601 /D_MBCS /DSSE_ENABLED=1 /DSSE3_ENABLED=1 /DSSSE3_ENABLED=1 -DCATBOOST_OPENSOURCE=yes -D_LIBCPP_VASPRINTF_DEFINED -D_WCHAR_H_CPLUSPLUS_98_CONFORMANCE_ "-I$(CUDA_PATH)/include" /DY_UCRT_INCLUDE="$(UniversalCRT_IncludePath.Split(';')[0].Replace('\','/'))" /DY_MSVC_INCLUDE="$(VC_VC_IncludePath.Split(';')[0].Replace('\','/'))" /DSTRICT /DNOMINMAX /DWIN32_LEAN_AND_MEAN /D__SSE2__=1 /D__SSE3__=1 /D__SSSE3__=1  /std:c++17 -DCATBOOST_OPENSOURCE=yes</AdditionalOptions>
       <WarningLevel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Level4</WarningLevel>
-      <RemoveUnreferencedCodeData Condition="'$(Configuration)|$(Platform)'=='Debug|x64'"/>
+      <RemoveUnreferencedCodeData Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" />
       <WarningLevel Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Level4</WarningLevel>
-      <RemoveUnreferencedCodeData Condition="'$(Configuration)|$(Platform)'=='Release|x64'"/>
+      <RemoveUnreferencedCodeData Condition="'$(Configuration)|$(Platform)'=='Release|x64'" />
       <AdditionalIncludeDirectories>;$(SolutionDir)$(Configuration);$(SolutionDir)..;$(SolutionDir)../contrib/libs/cxxsupp/libcxx/include;$(SolutionDir)../contrib/libs/double-conversion/include;$(SolutionDir)../contrib/libs/brotli/include;$(SolutionDir)../contrib/libs/protobuf;$(SolutionDir)../contrib/libs/protobuf/google/protobuf;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
@@ -78,29 +83,29 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\gpu_data\batch_binarized_ctr_calcer.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\gpu_data\bootstrap.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\gpu_data\cat_features_dataset.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\gpu_data\compressed_index.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\gpu_data\compressed_index_builder.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\gpu_data\ctr_helper.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\gpu_data\dataset_helpers.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\gpu_data\doc_parallel_dataset.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\gpu_data\doc_parallel_dataset_builder.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\gpu_data\estimated_features_calcer.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\gpu_data\feature_layout.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\gpu_data\feature_parallel_dataset.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\gpu_data\feature_parallel_dataset_builder.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\gpu_data\gpu_binarization_helpers.cpp"/>
-    <ClCompile Include="$(SolutionDir)$(Configuration)\catboost\cuda\gpu_data\grid_policy.h_serialized.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\gpu_data\kernels.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\gpu_data\non_zero_filter.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\gpu_data\oblivious_tree_bin_builder.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\gpu_data\pinned_memory_estimation.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\gpu_data\querywise_helper.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\gpu_data\samples_grouping.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\gpu_data\samples_grouping_gpu.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\gpu_data\splitter.cpp"/>
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\gpu_data\batch_binarized_ctr_calcer.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\gpu_data\bootstrap.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\gpu_data\cat_features_dataset.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\gpu_data\compressed_index.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\gpu_data\compressed_index_builder.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\gpu_data\ctr_helper.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\gpu_data\dataset_helpers.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\gpu_data\doc_parallel_dataset.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\gpu_data\doc_parallel_dataset_builder.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\gpu_data\estimated_features_calcer.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\gpu_data\feature_layout.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\gpu_data\feature_parallel_dataset.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\gpu_data\feature_parallel_dataset_builder.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\gpu_data\gpu_binarization_helpers.cpp" />
+    <ClCompile Include="$(SolutionDir)$(Configuration)\catboost\cuda\gpu_data\grid_policy.h_serialized.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\gpu_data\kernels.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\gpu_data\non_zero_filter.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\gpu_data\oblivious_tree_bin_builder.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\gpu_data\pinned_memory_estimation.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\gpu_data\querywise_helper.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\gpu_data\samples_grouping.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\gpu_data\samples_grouping_gpu.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\gpu_data\splitter.cpp" />
     <CustomBuild Include="$(SolutionDir)..\build\scripts\compile_cuda.py">
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
 cd /d $(SolutionDir)$(Configuration)\catboost\cuda\gpu_data
@@ -171,38 +176,38 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs>$(SolutionDir)..\catboost\cuda\gpu_data\grid_policy.h;$(SolutionDir)$(Configuration)\tools\enum_parser\enum_parser\enum_parser.exe;</AdditionalInputs>
       <Outputs>$(SolutionDir)$(Configuration)\catboost\cuda\gpu_data\grid_policy.h_serialized.cpp;</Outputs>
     </CustomBuild>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\gpu_data\batch_binarized_ctr_calcer.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\gpu_data\bootstrap.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\gpu_data\cat_features_dataset.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\gpu_data\compressed_index.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\gpu_data\compressed_index_builder.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\gpu_data\ctr_helper.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\gpu_data\cuda_features_helper.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\gpu_data\dataset_base.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\gpu_data\dataset_helpers.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\gpu_data\doc_parallel_dataset.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\gpu_data\doc_parallel_dataset_builder.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\gpu_data\estimated_features_calcer.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\gpu_data\feature_layout_common.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\gpu_data\feature_layout_doc_parallel.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\gpu_data\feature_layout_feature_parallel.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\gpu_data\feature_layout_single.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\gpu_data\feature_parallel_dataset.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\gpu_data\feature_parallel_dataset_builder.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\gpu_data\folds_histogram.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\gpu_data\gpu_binarization_helpers.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\gpu_data\gpu_structures.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\gpu_data\kernels.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\gpu_data\non_zero_filter.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\gpu_data\oblivious_tree_bin_builder.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\gpu_data\pinned_memory_estimation.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\gpu_data\querywise_helper.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\gpu_data\samples_grouping.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\gpu_data\samples_grouping_gpu.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\gpu_data\splitter.h"/>
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\gpu_data\batch_binarized_ctr_calcer.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\gpu_data\bootstrap.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\gpu_data\cat_features_dataset.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\gpu_data\compressed_index.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\gpu_data\compressed_index_builder.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\gpu_data\ctr_helper.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\gpu_data\cuda_features_helper.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\gpu_data\dataset_base.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\gpu_data\dataset_helpers.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\gpu_data\doc_parallel_dataset.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\gpu_data\doc_parallel_dataset_builder.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\gpu_data\estimated_features_calcer.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\gpu_data\feature_layout_common.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\gpu_data\feature_layout_doc_parallel.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\gpu_data\feature_layout_feature_parallel.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\gpu_data\feature_layout_single.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\gpu_data\feature_parallel_dataset.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\gpu_data\feature_parallel_dataset_builder.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\gpu_data\folds_histogram.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\gpu_data\gpu_binarization_helpers.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\gpu_data\gpu_structures.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\gpu_data\kernels.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\gpu_data\non_zero_filter.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\gpu_data\oblivious_tree_bin_builder.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\gpu_data\pinned_memory_estimation.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\gpu_data\querywise_helper.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\gpu_data\samples_grouping.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\gpu_data\samples_grouping_gpu.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\gpu_data\splitter.h" />
   </ItemGroup>
-  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets"/>
-  <ImportGroup Label="ExtensionTargets"/>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets" />
   <ItemGroup>
     <ProjectReference Include="$(SolutionDir)Projects\build\platform\cuda\build-platform-cuda.vcxproj">
       <Project>{18ED0C1C-3127-4315-3368-E63B97EFA8F1}</Project>
@@ -483,5 +488,13 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ProjectReference Include="$(SolutionDir)Projects\util\yutil.vcxproj">
       <Project>{1C91E826-1D2A-B4DB-C1D2-F89E49E9BDCD}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\..\..\catboost\cuda\gpu_data\kernel\binarize.cu" />
+    <None Include="..\..\..\..\..\catboost\cuda\gpu_data\kernel\binarize.cuh" />
+    <None Include="..\..\..\..\..\catboost\cuda\gpu_data\kernel\query_helper.cu" />
+    <None Include="..\..\..\..\..\catboost\cuda\gpu_data\kernel\query_helper.cuh" />
+    <None Include="..\..\..\..\..\catboost\cuda\gpu_data\kernel\split.cu" />
+    <None Include="..\..\..\..\..\catboost\cuda\gpu_data\kernel\split.cuh" />
   </ItemGroup>
 </Project>

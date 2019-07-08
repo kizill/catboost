@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build" ToolsVersion="4.0">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|x64">
@@ -18,18 +18,23 @@
     <LatestTargetPlatformVersion>$([Microsoft.Build.Utilities.ToolLocationHelper]::GetLatestSDKTargetPlatformVersion('Windows', '10.0'))</LatestTargetPlatformVersion>
     <WindowsTargetPlatformVersion>$(LatestTargetPlatformVersion)</WindowsTargetPlatformVersion>
   </PropertyGroup>
-  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.default.props"/>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.default.props" />
   <PropertyGroup Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseOfMfc>false</UseOfMfc>
     <CharacterSet>Multibyte</CharacterSet>
     <PlatformToolset>v141</PlatformToolset>
   </PropertyGroup>
-  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props"/>
-  <ImportGroup Label="ArcadiaProps"/>
-  <ImportGroup Label="ExtensionSettings"/>
-  <ImportGroup Label="PropertySheets"/>
-  <PropertyGroup Label="UserMacros"/>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ArcadiaProps" />
+  <ImportGroup Label="ExtensionSettings" />
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="..\..\..\..\..\_inculde_cuda.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="..\..\..\..\..\_inculde_cuda.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
@@ -60,9 +65,9 @@
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">/nologo /Zm500 /GR /bigobj /FC /EHs /errorReport:prompt /Zc:inline /DFAKEID=5020880 /we4013 /w14018 /w14265 /w14296 /w14431 /wd4127 /wd4200 /wd4201 /wd4351 /wd4355 /wd4503 /wd4510 /wd4511 /wd4512 /wd4554 /wd4610 /wd4706 /wd4800 /wd4996 /wd4714 /wd4197 /wd4245 /wd4324 /wd5033 /FD /MP /Ob0 /Od /D_DEBUG /MTd /Zi /FS /DWIN32 /D_WIN32 /D_WINDOWS /D_CRT_SECURE_NO_WARNINGS /D_CRT_NONSTDC_NO_WARNINGS /D_USE_MATH_DEFINES /D__STDC_CONSTANT_MACROS /D__STDC_FORMAT_MACROS /D_USING_V110_SDK71_ /D_LIBCPP_ENABLE_CXX17_REMOVED_FEATURES /D_WIN64 /DWIN64 /D_WIN32_WINNT=0x0601 /D_MBCS /DSSE_ENABLED=1 /DSSE3_ENABLED=1 /DSSSE3_ENABLED=1 -DCATBOOST_OPENSOURCE=yes -D_LIBCPP_VASPRINTF_DEFINED -D_WCHAR_H_CPLUSPLUS_98_CONFORMANCE_ "-I$(CUDA_PATH)/include" /DY_UCRT_INCLUDE="$(UniversalCRT_IncludePath.Split(';')[0].Replace('\','/'))" /DY_MSVC_INCLUDE="$(VC_VC_IncludePath.Split(';')[0].Replace('\','/'))" /DSTRICT /DNOMINMAX /DWIN32_LEAN_AND_MEAN /D__SSE2__=1 /D__SSE3__=1 /D__SSSE3__=1  /std:c++17 -DCATBOOST_OPENSOURCE=yes</AdditionalOptions>
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|x64'">/nologo /Zm500 /GR /bigobj /FC /EHs /errorReport:prompt /Zc:inline /DFAKEID=5020880 /we4013 /w14018 /w14265 /w14296 /w14431 /wd4127 /wd4200 /wd4201 /wd4351 /wd4355 /wd4503 /wd4510 /wd4511 /wd4512 /wd4554 /wd4610 /wd4706 /wd4800 /wd4996 /wd4714 /wd4197 /wd4245 /wd4324 /wd5033 /FD /MP /Ox /Ob2 /Oi /DNDEBUG /MT /Zi /FS /DWIN32 /D_WIN32 /D_WINDOWS /D_CRT_SECURE_NO_WARNINGS /D_CRT_NONSTDC_NO_WARNINGS /D_USE_MATH_DEFINES /D__STDC_CONSTANT_MACROS /D__STDC_FORMAT_MACROS /D_USING_V110_SDK71_ /D_LIBCPP_ENABLE_CXX17_REMOVED_FEATURES /D_WIN64 /DWIN64 /D_WIN32_WINNT=0x0601 /D_MBCS /DSSE_ENABLED=1 /DSSE3_ENABLED=1 /DSSSE3_ENABLED=1 -DCATBOOST_OPENSOURCE=yes -D_LIBCPP_VASPRINTF_DEFINED -D_WCHAR_H_CPLUSPLUS_98_CONFORMANCE_ "-I$(CUDA_PATH)/include" /DY_UCRT_INCLUDE="$(UniversalCRT_IncludePath.Split(';')[0].Replace('\','/'))" /DY_MSVC_INCLUDE="$(VC_VC_IncludePath.Split(';')[0].Replace('\','/'))" /DSTRICT /DNOMINMAX /DWIN32_LEAN_AND_MEAN /D__SSE2__=1 /D__SSE3__=1 /D__SSSE3__=1  /std:c++17 -DCATBOOST_OPENSOURCE=yes</AdditionalOptions>
       <WarningLevel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Level4</WarningLevel>
-      <RemoveUnreferencedCodeData Condition="'$(Configuration)|$(Platform)'=='Debug|x64'"/>
+      <RemoveUnreferencedCodeData Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" />
       <WarningLevel Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Level4</WarningLevel>
-      <RemoveUnreferencedCodeData Condition="'$(Configuration)|$(Platform)'=='Release|x64'"/>
+      <RemoveUnreferencedCodeData Condition="'$(Configuration)|$(Platform)'=='Release|x64'" />
       <AdditionalIncludeDirectories>;$(SolutionDir)$(Configuration);$(SolutionDir)..;$(SolutionDir)../contrib/libs/cxxsupp/libcxx/include;$(SolutionDir)../contrib/libs/double-conversion/include;$(SolutionDir)../contrib/libs/brotli/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
@@ -78,22 +83,22 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_util\bootstrap.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_util\compression_helpers_gpu.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_util\dot_product.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_util\fill.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_util\filter.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_util\gpu_random.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_util\helpers.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_util\partitions.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_util\partitions_reduce.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_util\reduce.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_util\reorder_bins.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_util\scan.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_util\segmented_scan.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_util\segmented_sort.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_util\sort.cpp"/>
-    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_util\transform.cpp"/>
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_util\bootstrap.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_util\compression_helpers_gpu.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_util\dot_product.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_util\fill.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_util\filter.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_util\gpu_random.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_util\helpers.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_util\partitions.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_util\partitions_reduce.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_util\reduce.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_util\reorder_bins.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_util\scan.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_util\segmented_scan.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_util\segmented_sort.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_util\sort.cpp" />
+    <ClCompile Include="$(SolutionDir)..\catboost\cuda\cuda_util\transform.cpp" />
     <CustomBuild Include="$(SolutionDir)..\build\scripts\compile_cuda.py">
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
 cd /d $(SolutionDir)$(Configuration)\catboost\cuda\cuda_util
@@ -321,29 +326,29 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs>$(SolutionDir)..\build\scripts\compile_cuda.py;$(SolutionDir)..\catboost\cuda\cuda_util\kernel\bootstrap.cu;$(SolutionDir)..\catboost\cuda\cuda_util\kernel\compression.cu;$(SolutionDir)..\catboost\cuda\cuda_util\kernel\dot_product.cu;$(SolutionDir)..\catboost\cuda\cuda_util\kernel\fill.cu;$(SolutionDir)..\catboost\cuda\cuda_util\kernel\filter.cu;$(SolutionDir)..\catboost\cuda\cuda_util\kernel\operators.cu;$(SolutionDir)..\catboost\cuda\cuda_util\kernel\partitions.cu;$(SolutionDir)..\catboost\cuda\cuda_util\kernel\random.cu;$(SolutionDir)..\catboost\cuda\cuda_util\kernel\reduce.cu;$(SolutionDir)..\catboost\cuda\cuda_util\kernel\reorder_one_bit.cu;$(SolutionDir)..\catboost\cuda\cuda_util\kernel\scan.cu;$(SolutionDir)..\catboost\cuda\cuda_util\kernel\segmented_scan.cu;$(SolutionDir)..\catboost\cuda\cuda_util\kernel\segmented_sort.cu;$(SolutionDir)..\catboost\cuda\cuda_util\kernel\sort\bool_uchar.cu;$(SolutionDir)..\catboost\cuda\cuda_util\kernel\sort\bool_ui32.cu;$(SolutionDir)..\catboost\cuda\cuda_util\kernel\sort\float_uchar.cu;$(SolutionDir)..\catboost\cuda\cuda_util\kernel\sort\float_ui16.cu;$(SolutionDir)..\catboost\cuda\cuda_util\kernel\sort\float_ui32.cu;$(SolutionDir)..\catboost\cuda\cuda_util\kernel\sort\float_uint2.cu;$(SolutionDir)..\catboost\cuda\cuda_util\kernel\sort\ui32_uchar.cu;$(SolutionDir)..\catboost\cuda\cuda_util\kernel\sort\ui32_ui16.cu;$(SolutionDir)..\catboost\cuda\cuda_util\kernel\sort\ui32_ui32.cu;$(SolutionDir)..\catboost\cuda\cuda_util\kernel\sort\ui64_uchar.cu;$(SolutionDir)..\catboost\cuda\cuda_util\kernel\sort\ui64_ui32.cu;$(SolutionDir)..\catboost\cuda\cuda_util\kernel\transform.cu;$(SolutionDir)..\catboost\cuda\cuda_util\kernel\update_part_props.cu;</AdditionalInputs>
       <Outputs>$(SolutionDir)$(Configuration)\catboost\cuda\cuda_util\kernel\bootstrap.cu.obj;$(SolutionDir)$(Configuration)\catboost\cuda\cuda_util\kernel\compression.cu.obj;$(SolutionDir)$(Configuration)\catboost\cuda\cuda_util\kernel\dot_product.cu.obj;$(SolutionDir)$(Configuration)\catboost\cuda\cuda_util\kernel\fill.cu.obj;$(SolutionDir)$(Configuration)\catboost\cuda\cuda_util\kernel\filter.cu.obj;$(SolutionDir)$(Configuration)\catboost\cuda\cuda_util\kernel\operators.cu.obj;$(SolutionDir)$(Configuration)\catboost\cuda\cuda_util\kernel\partitions.cu.obj;$(SolutionDir)$(Configuration)\catboost\cuda\cuda_util\kernel\random.cu.obj;$(SolutionDir)$(Configuration)\catboost\cuda\cuda_util\kernel\reduce.cu.obj;$(SolutionDir)$(Configuration)\catboost\cuda\cuda_util\kernel\reorder_one_bit.cu.obj;$(SolutionDir)$(Configuration)\catboost\cuda\cuda_util\kernel\scan.cu.obj;$(SolutionDir)$(Configuration)\catboost\cuda\cuda_util\kernel\segmented_scan.cu.obj;$(SolutionDir)$(Configuration)\catboost\cuda\cuda_util\kernel\segmented_sort.cu.obj;$(SolutionDir)$(Configuration)\catboost\cuda\cuda_util\kernel\sort\bool_uchar.cu.obj;$(SolutionDir)$(Configuration)\catboost\cuda\cuda_util\kernel\sort\bool_ui32.cu.obj;$(SolutionDir)$(Configuration)\catboost\cuda\cuda_util\kernel\sort\float_uchar.cu.obj;$(SolutionDir)$(Configuration)\catboost\cuda\cuda_util\kernel\sort\float_ui16.cu.obj;$(SolutionDir)$(Configuration)\catboost\cuda\cuda_util\kernel\sort\float_ui32.cu.obj;$(SolutionDir)$(Configuration)\catboost\cuda\cuda_util\kernel\sort\float_uint2.cu.obj;$(SolutionDir)$(Configuration)\catboost\cuda\cuda_util\kernel\sort\ui32_uchar.cu.obj;$(SolutionDir)$(Configuration)\catboost\cuda\cuda_util\kernel\sort\ui32_ui16.cu.obj;$(SolutionDir)$(Configuration)\catboost\cuda\cuda_util\kernel\sort\ui32_ui32.cu.obj;$(SolutionDir)$(Configuration)\catboost\cuda\cuda_util\kernel\sort\ui64_uchar.cu.obj;$(SolutionDir)$(Configuration)\catboost\cuda\cuda_util\kernel\sort\ui64_ui32.cu.obj;$(SolutionDir)$(Configuration)\catboost\cuda\cuda_util\kernel\transform.cu.obj;$(SolutionDir)$(Configuration)\catboost\cuda\cuda_util\kernel\update_part_props.cu.obj;</Outputs>
     </CustomBuild>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_util\algorithm.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_util\bootstrap.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_util\compression_helpers_gpu.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_util\dot_product.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_util\fill.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_util\filter.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_util\gpu_data\partitions.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_util\gpu_random.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_util\helpers.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_util\operator.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_util\partitions.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_util\partitions_reduce.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_util\reduce.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_util\reorder_bins.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_util\run_stream_parallel_jobs.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_util\scan.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_util\segmented_scan.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_util\segmented_sort.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_util\sort.h"/>
-    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_util\transform.h"/>
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_util\algorithm.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_util\bootstrap.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_util\compression_helpers_gpu.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_util\dot_product.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_util\fill.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_util\filter.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_util\gpu_data\partitions.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_util\gpu_random.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_util\helpers.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_util\operator.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_util\partitions.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_util\partitions_reduce.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_util\reduce.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_util\reorder_bins.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_util\run_stream_parallel_jobs.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_util\scan.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_util\segmented_scan.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_util\segmented_sort.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_util\sort.h" />
+    <ClInclude Include="$(SolutionDir)..\catboost\cuda\cuda_util\transform.h" />
   </ItemGroup>
-  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets"/>
-  <ImportGroup Label="ExtensionTargets"/>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets" />
   <ItemGroup>
     <ProjectReference Include="$(SolutionDir)Projects\build\platform\cuda\build-platform-cuda.vcxproj">
       <Project>{18ED0C1C-3127-4315-3368-E63B97EFA8F1}</Project>
@@ -522,5 +527,61 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ProjectReference Include="$(SolutionDir)Projects\util\yutil.vcxproj">
       <Project>{1C91E826-1D2A-B4DB-C1D2-F89E49E9BDCD}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\..\..\catboost\cuda\cuda_util\kernel\bootstrap.cu" />
+    <None Include="..\..\..\..\..\catboost\cuda\cuda_util\kernel\bootstrap.cuh" />
+    <None Include="..\..\..\..\..\catboost\cuda\cuda_util\kernel\compression.cu" />
+    <None Include="..\..\..\..\..\catboost\cuda\cuda_util\kernel\compression.cuh" />
+    <None Include="..\..\..\..\..\catboost\cuda\cuda_util\kernel\compression_helper.cuh" />
+    <None Include="..\..\..\..\..\catboost\cuda\cuda_util\kernel\cub_storage_context.cuh" />
+    <None Include="..\..\..\..\..\catboost\cuda\cuda_util\kernel\dot_product.cu" />
+    <None Include="..\..\..\..\..\catboost\cuda\cuda_util\kernel\dot_product.cuh" />
+    <None Include="..\..\..\..\..\catboost\cuda\cuda_util\kernel\fill.cu" />
+    <None Include="..\..\..\..\..\catboost\cuda\cuda_util\kernel\fill.cuh" />
+    <None Include="..\..\..\..\..\catboost\cuda\cuda_util\kernel\filter.cu" />
+    <None Include="..\..\..\..\..\catboost\cuda\cuda_util\kernel\filter.cuh" />
+    <None Include="..\..\..\..\..\catboost\cuda\cuda_util\kernel\index_wrapper.cuh" />
+    <None Include="..\..\..\..\..\catboost\cuda\cuda_util\kernel\inplace_scan.cuh" />
+    <None Include="..\..\..\..\..\catboost\cuda\cuda_util\kernel\instructions.cuh" />
+    <None Include="..\..\..\..\..\catboost\cuda\cuda_util\kernel\kernel_helpers.cuh" />
+    <None Include="..\..\..\..\..\catboost\cuda\cuda_util\kernel\operators.cu" />
+    <None Include="..\..\..\..\..\catboost\cuda\cuda_util\kernel\operators.cuh" />
+    <None Include="..\..\..\..\..\catboost\cuda\cuda_util\kernel\partitions.cu" />
+    <None Include="..\..\..\..\..\catboost\cuda\cuda_util\kernel\partitions.cuh" />
+    <None Include="..\..\..\..\..\catboost\cuda\cuda_util\kernel\random.cu" />
+    <None Include="..\..\..\..\..\catboost\cuda\cuda_util\kernel\random.cuh" />
+    <None Include="..\..\..\..\..\catboost\cuda\cuda_util\kernel\random_gen.cuh" />
+    <None Include="..\..\..\..\..\catboost\cuda\cuda_util\kernel\reduce.cu" />
+    <None Include="..\..\..\..\..\catboost\cuda\cuda_util\kernel\reduce.cuh" />
+    <None Include="..\..\..\..\..\catboost\cuda\cuda_util\kernel\reorder_one_bit.cu" />
+    <None Include="..\..\..\..\..\catboost\cuda\cuda_util\kernel\reorder_one_bit.cuh" />
+    <None Include="..\..\..\..\..\catboost\cuda\cuda_util\kernel\reorder_one_bit_impl.cuh" />
+    <None Include="..\..\..\..\..\catboost\cuda\cuda_util\kernel\scan.cu" />
+    <None Include="..\..\..\..\..\catboost\cuda\cuda_util\kernel\scan.cuh" />
+    <None Include="..\..\..\..\..\catboost\cuda\cuda_util\kernel\segmented_scan.cu" />
+    <None Include="..\..\..\..\..\catboost\cuda\cuda_util\kernel\segmented_scan.cuh" />
+    <None Include="..\..\..\..\..\catboost\cuda\cuda_util\kernel\segmented_scan_helpers.cuh" />
+    <None Include="..\..\..\..\..\catboost\cuda\cuda_util\kernel\segmented_sort.cu" />
+    <None Include="..\..\..\..\..\catboost\cuda\cuda_util\kernel\segmented_sort.cuh" />
+    <None Include="..\..\..\..\..\catboost\cuda\cuda_util\kernel\sort.cuh" />
+    <None Include="..\..\..\..\..\catboost\cuda\cuda_util\kernel\sort\bool_uchar.cu" />
+    <None Include="..\..\..\..\..\catboost\cuda\cuda_util\kernel\sort\bool_ui32.cu" />
+    <None Include="..\..\..\..\..\catboost\cuda\cuda_util\kernel\sort\float_uchar.cu" />
+    <None Include="..\..\..\..\..\catboost\cuda\cuda_util\kernel\sort\float_ui16.cu" />
+    <None Include="..\..\..\..\..\catboost\cuda\cuda_util\kernel\sort\float_ui32.cu" />
+    <None Include="..\..\..\..\..\catboost\cuda\cuda_util\kernel\sort\float_uint2.cu" />
+    <None Include="..\..\..\..\..\catboost\cuda\cuda_util\kernel\sort\ui32_uchar.cu" />
+    <None Include="..\..\..\..\..\catboost\cuda\cuda_util\kernel\sort\ui32_ui16.cu" />
+    <None Include="..\..\..\..\..\catboost\cuda\cuda_util\kernel\sort\ui32_ui32.cu" />
+    <None Include="..\..\..\..\..\catboost\cuda\cuda_util\kernel\sort\ui64_uchar.cu" />
+    <None Include="..\..\..\..\..\catboost\cuda\cuda_util\kernel\sort\ui64_ui32.cu" />
+    <None Include="..\..\..\..\..\catboost\cuda\cuda_util\kernel\sort_templ.cuh" />
+    <None Include="..\..\..\..\..\catboost\cuda\cuda_util\kernel\transform.cu" />
+    <None Include="..\..\..\..\..\catboost\cuda\cuda_util\kernel\transform.cuh" />
+    <None Include="..\..\..\..\..\catboost\cuda\cuda_util\kernel\unique.cu" />
+    <None Include="..\..\..\..\..\catboost\cuda\cuda_util\kernel\unique.cuh" />
+    <None Include="..\..\..\..\..\catboost\cuda\cuda_util\kernel\update_part_props.cu" />
+    <None Include="..\..\..\..\..\catboost\cuda\cuda_util\kernel\update_part_props.cuh" />
   </ItemGroup>
 </Project>
