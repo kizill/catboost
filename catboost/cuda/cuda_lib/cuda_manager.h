@@ -393,6 +393,7 @@ namespace NCudaLib {
 
         ~TStopChildCudaManagerCallback() {
             auto& manager = NCudaLib::GetCudaManager();
+            // TODO(kirillovs): don't throw exception on stack unwind!! #cuda_destructor_throws
             CB_ENSURE(&manager == Owner);
             manager.StopChild();
         }

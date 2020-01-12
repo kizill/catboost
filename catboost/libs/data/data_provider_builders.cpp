@@ -812,6 +812,7 @@ namespace NCB {
 
             void SetDefaultValue(TFeatureIdx<FeatureType> perTypeFeatureIdx, T value) {
                 if (*perTypeFeatureIdx >= PerFeatureData.size()) {
+                    // TODO(kirillovs): #variable_redefinition_bug
                     for (auto perTypeFeatureIdx : xrange(PerFeatureData.size(), size_t(*perTypeFeatureIdx + 1))) {
                         Y_UNUSED(perTypeFeatureIdx);
                         PerFeatureData.emplace_back(

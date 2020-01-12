@@ -102,6 +102,7 @@ TSplit TCandidateInfo::GetSplit(
                 return TSplit();
             }
     }
+    Y_UNREACHABLE();
 }
 
 

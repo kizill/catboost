@@ -546,7 +546,7 @@ namespace NCatboostCuda {
                 PrintBestScore(FeaturesManager, split, bestSplit.Score, depth);
             } else {
                 ui32 iteration = subsets.Leaves.size();
-
+                
                 if (Options.Policy == EGrowPolicy::Depthwise) {
                     iteration = 0;
                     for (auto& leaf : subsets.Leaves) {

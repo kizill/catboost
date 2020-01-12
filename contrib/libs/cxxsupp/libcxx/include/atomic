@@ -1558,7 +1558,7 @@ struct __atomic_base  // false
 #ifndef _LIBCPP_CXX03_LANG
     __atomic_base(const __atomic_base&) = delete;
     __atomic_base& operator=(const __atomic_base&) = delete;
-    __atomic_base& operator=(const __atomic_base&) volatile = delete;
+    //__atomic_base& operator=(const __atomic_base&) volatile = delete;
 #else
 private:
     __atomic_base(const __atomic_base&);
@@ -2325,7 +2325,7 @@ typedef struct atomic_flag
 #ifndef _LIBCPP_CXX03_LANG
     atomic_flag(const atomic_flag&) = delete;
     atomic_flag& operator=(const atomic_flag&) = delete;
-    atomic_flag& operator=(const atomic_flag&) volatile = delete;
+    //atomic_flag& operator=(const atomic_flag&) volatile = delete;
 #else
 private:
     atomic_flag(const atomic_flag&);

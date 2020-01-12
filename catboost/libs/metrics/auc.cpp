@@ -130,6 +130,7 @@ static double ParallelSortAndCountInversions(
                 }
             }
         );
+        //TODO(kirillovs): #variable_redefinition_bug
         ui32 position = 0;
         for (ui32 i = 0; i < currentMergesCount; ++i) {
             for (ui32 j = position; j + 1 < position + threadsPerMergeCount[i]; ++j) {

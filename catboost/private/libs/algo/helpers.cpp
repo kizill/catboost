@@ -183,7 +183,7 @@ void CalcErrors(
 
                 auto weights = GetWeights(*targetData);
                 auto queryInfo = targetData->GetGroupInfo().GetOrElse(TConstArrayRef<TQueryInfo>());
-
+                // TODO(kirillovs): #variable_redefinition_bug
                 auto errors = EvalErrorsWithCaching(
                     ctx->LearnProgress->AvrgApprox,
                     /*approxDelta*/{},
@@ -217,7 +217,7 @@ void CalcErrors(
             TMaybe<int> trackerIdx = calcErrorTrackerMetric ? TMaybe<int>(0) : Nothing();
             TMaybe<int> filteredTrackerIdx;
             auto testMetrics = FilterTestMetrics(errors, calcAllMetrics, maybeTarget.Defined(), trackerIdx, &filteredTrackerIdx);
-
+            // TODO(kirillovs): #variable_redefinition_bug
             auto errors = EvalErrorsWithCaching(
                 ctx->LearnProgress->TestApprox[testIdx],
                 /*approxDelta*/{},

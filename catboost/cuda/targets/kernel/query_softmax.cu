@@ -17,8 +17,7 @@ namespace NKernel {
         const int qid = blockIdx.x * queriesPerBlock + localQid;
 
         __shared__ volatile float line[BLOCK_SIZE];
-        __shared__ float resultMaxApprox[queriesPerBlock];
-        __shared__ float resultSumWeightedTarget[queriesPerBlock];
+        // TODO(kirillovs): figure out if we could delete those unused shared memory arrays
         ui32 readOffset = qid < qCount ? (qOffsets[qid] - offsetsBias) : 0;
         weights += (weights != nullptr) ? readOffset : 0;
         target += readOffset;

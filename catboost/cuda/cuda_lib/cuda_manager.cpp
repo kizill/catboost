@@ -15,6 +15,7 @@ void TCudaManager::CreateProfiler() {
 
 TCudaManager::~TCudaManager() {
     Y_VERIFY(Profiler == nullptr, "Reset profile before stopping cuda manager");
+    // TODO(kirillovs): don't throw exception on stack unwind!! #cuda_destructor_throws
     CB_ENSURE(FreeStreams.size() == 0, "Error: CudaManager was not stopped");
     CB_ENSURE(Streams.size() == 0, "Error: CudaManager was not stopped");
 }

@@ -209,6 +209,7 @@ public:
                 return (other.Type == ESplitEnsembleType::FeaturesGroup) &&
                        (FeaturesGroupRef == other.FeaturesGroupRef);
         }
+        Y_UNREACHABLE();
     }
 
     SAVELOAD(Type, SplitCandidate, BinarySplitsPackRef, ExclusiveFeaturesBundleRef, FeaturesGroupRef);
@@ -224,6 +225,7 @@ public:
             case ESplitEnsembleType::FeaturesGroup:
                 return MultiHash(FeaturesGroupHash, FeaturesGroupRef.GroupIdx);
         }
+        Y_UNREACHABLE();
     }
 
     bool IsSplitOfType(ESplitType type) const {
@@ -291,6 +293,7 @@ public:
                 return (other.Type == ESplitEnsembleType::FeaturesGroup) &&
                     (FeaturesGroup == other.FeaturesGroup);
         }
+        Y_UNREACHABLE();
     }
 
     static TSplitEnsembleSpec OneSplit(ESplitType splitType) {

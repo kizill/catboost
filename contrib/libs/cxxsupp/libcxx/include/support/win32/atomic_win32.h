@@ -798,7 +798,7 @@ static inline _Tp __c11_atomic_fetch_add(_Atomic(_Tp)* __a,
                                          _Td __delta, int __order) {
     return __c11_atomic_fetch_add((volatile _Atomic(_Tp)*) __a, __delta, __order);
 }
-
+#pragma warning(disable:4146)
 template <typename _Tp, typename _Td>
 static inline _Tp __c11_atomic_fetch_sub(volatile _Atomic(_Tp)* __a,
                                          _Td __delta, int __order) {
