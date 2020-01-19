@@ -195,6 +195,7 @@ ui32 TFeaturesLayout::GetExternalFeatureIdx(ui32 internalFeatureIdx, EFeatureTyp
         case EFeatureType::Text:
             return TextFeatureInternalIdxToExternalIdx[internalFeatureIdx];
     }
+    Y_UNREACHABLE();
 }
 
 ui32 TFeaturesLayout::GetInternalFeatureIdx(ui32 externalFeatureIdx) const {
@@ -220,6 +221,7 @@ bool TFeaturesLayout::IsCorrectInternalFeatureIdx(ui32 internalFeatureIdx, EFeat
         case EFeatureType::Text:
             return (size_t)internalFeatureIdx < TextFeatureInternalIdxToExternalIdx.size();
     }
+    Y_UNREACHABLE();
 }
 
 bool TFeaturesLayout::IsCorrectExternalFeatureIdxAndType(ui32 externalFeatureIdx, EFeatureType type) const {
@@ -258,6 +260,7 @@ ui32 TFeaturesLayout::GetFeatureCount(EFeatureType type) const {
         case EFeatureType::Text:
             return GetTextFeatureCount();
     }
+    Y_UNREACHABLE();
 }
 
 bool TFeaturesLayout::HasSparseFeatures(bool checkOnlyAvailable) const {

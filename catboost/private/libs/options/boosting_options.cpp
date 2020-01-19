@@ -7,8 +7,8 @@
 #include <util/generic/ymath.h>
 
 NCatboostOptions::TBoostingOptions::TBoostingOptions(ETaskType taskType)
-    : LearningRate("learning_rate", 0.03)
-    , FoldLenMultiplier("fold_len_multiplier", 2.0)
+    : LearningRate("learning_rate", 0.03f)
+    , FoldLenMultiplier("fold_len_multiplier", 2.0f)
     , PermutationBlockSize("fold_permutation_block", 0)
     , IterationCount("iterations", 1000)
     , PermutationCount("permutation_count", 4)

@@ -75,9 +75,9 @@ namespace NNetliba_v12 {
 
     public:
         TStatAggregator()
-            : Swx(0.0)
-            , Sw(0.0001) //no zero, but small positive value;
-            , Result(0.0)
+            : Swx(0.0f)
+            , Sw(0.0001f) //no zero, but small positive value;
+            , Result(0.0f)
         {
         }
         void AddPoint(float value) {

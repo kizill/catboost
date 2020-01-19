@@ -75,6 +75,7 @@ bool NDaemonMaker::MakeMeDaemon(ECloseDescriptors cd, EStdIoDescriptors iod, ECh
     (void)cd;
     (void)iod;
     (void)chd;
+    (void)parent;
 
 #ifdef _unix_
     if (Fork(parent)) {

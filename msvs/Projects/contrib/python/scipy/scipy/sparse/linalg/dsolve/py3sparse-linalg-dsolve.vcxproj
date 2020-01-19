@@ -76,6 +76,7 @@
       <GenerateDebugInformation Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Debug</GenerateDebugInformation>
       <RandomizedBaseAddress Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</RandomizedBaseAddress>
     </Link>
+    <Lib><AdditionalOptions>/NOLOGO /IGNORE:4221</AdditionalOptions></Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="$(SolutionDir)$(Configuration)\contrib\python\scipy\scipy\sparse\linalg\dsolve\3cd802defac6d4a045de66460c.cpp"/>

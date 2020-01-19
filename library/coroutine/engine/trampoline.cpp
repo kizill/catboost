@@ -38,6 +38,7 @@ namespace NCoro {
             case TStack::EGuard::Page:
                 return pageSize;
             }
+            Y_UNREACHABLE();
         }
 
         void ProtectWithCanary(TArrayRef<char> alignedRange) {

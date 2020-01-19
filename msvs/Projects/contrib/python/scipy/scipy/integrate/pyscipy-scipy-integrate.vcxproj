@@ -76,6 +76,7 @@
       <GenerateDebugInformation Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Debug</GenerateDebugInformation>
       <RandomizedBaseAddress Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</RandomizedBaseAddress>
     </Link>
+    <Lib><AdditionalOptions>/NOLOGO /IGNORE:4221</AdditionalOptions></Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="$(SolutionDir)$(Configuration)\contrib\python\scipy\scipy\integrate\7841405bc80a5b3f1404fa4f76.cpp"/>

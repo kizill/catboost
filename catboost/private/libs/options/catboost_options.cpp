@@ -788,9 +788,9 @@ void NCatboostOptions::TCatBoostOptions::SetNotSpecifiedOptionsToDefaults() {
             shrinkRate.NotSet())
         {
             if (BoostingOptions->ModelShrinkMode == EModelShrinkMode::Constant) {
-                shrinkRate = 0.01;
+                shrinkRate = 0.01f;
             } else {
-                shrinkRate = 0.2;
+                shrinkRate = 0.2f;
             }
         }
 

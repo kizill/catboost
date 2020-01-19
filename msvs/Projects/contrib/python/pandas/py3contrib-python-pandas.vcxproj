@@ -76,6 +76,7 @@
       <GenerateDebugInformation Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Debug</GenerateDebugInformation>
       <RandomizedBaseAddress Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</RandomizedBaseAddress>
     </Link>
+    <Lib><AdditionalOptions>/NOLOGO /IGNORE:4221</AdditionalOptions></Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="$(SolutionDir)$(Configuration)\contrib\python\pandas\6c913bfc6e9384b1f963adc3ea.cpp"/>
