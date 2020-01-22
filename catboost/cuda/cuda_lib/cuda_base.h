@@ -29,6 +29,28 @@ Y_DECLARE_PODTYPE(uint4);
         }                                                                                                            \
     }
 
+#ifdef _MSC_VER
+#define CUDA_DISABLE_4297_WARN __pragma(warning(push)); __pragma(warning(disable:4297))
+#define CUDA_RESTORE_WARNINGS __pragma(warning(pop))
+#else
+#define CUDA_DISABLE_4297_WARN
+#define CUDA_RESTORE_WARNINGS
+#endif
+
+#define CUDA_SAFE_CALL_FOR_DESTRUCTOR(statement)                                                                                    \
+    {                                                                                                                \
+        cudaError_t errorCode = statement;                                                                           \
+        if (errorCode != cudaSuccess && errorCode != cudaErrorCudartUnloading) {                                     \
+            if (UncaughtException()) {                                                                               \
+                CATBOOST_ERROR_LOG << "Got CUDA error while processing exception: " << CurrentExceptionMessage() << Endl;\
+            } else {                                                                                                 \
+                CUDA_DISABLE_4297_WARN                                                                               \
+                ythrow TCatBoostException() << "CUDA error " << (int)errorCode << ": " << cudaGetErrorString(errorCode); \
+                CUDA_RESTORE_WARNINGS                                                                                \
+            }                                                                                                        \
+        }                                                                                                            \
+    }
+
 namespace NCudaLib {
     class TCudaStreamsProvider: public TNonCopyable {
     private:

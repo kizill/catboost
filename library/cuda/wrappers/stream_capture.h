@@ -5,7 +5,7 @@
 
 class TStreamCapture {
 public:
-    ~TStreamCapture();
+    ~TStreamCapture() noexcept(false);
 
     static TStreamCapture Capture(TCudaStream stream, TCudaGraph* graph);
 

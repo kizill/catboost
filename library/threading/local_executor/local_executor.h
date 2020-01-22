@@ -6,6 +6,7 @@
 #include <util/generic/noncopyable.h>
 #include <util/generic/ptr.h>
 #include <util/generic/singleton.h>
+#include <util/generic/xrange.h>
 #include <util/generic/ymath.h>
 
 #include <functional>
@@ -107,6 +108,12 @@ namespace NPar {
                 return BlockEqualToThreads;
             }
 
+            auto GetBlockRange(size_t blockId) const {
+                const int blockFirstId = FirstId + blockId * GetBlockSize();
+                const int blockLastId = Min(LastId, blockFirstId + GetBlockSize());
+                return xrange(blockFirstId, blockLastId);
+            }
+
             const int FirstId = 0;
             const int LastId = 0;
 
@@ -169,9 +176,7 @@ namespace NPar {
         template <typename TBody>
         static inline auto BlockedLoopBody(const TLocalExecutor::TExecRangeParams& params, const TBody& body) {
             return [=](int blockId) {
-                const int blockFirstId = params.FirstId + blockId * params.GetBlockSize();
-                const int blockLastId = Min(params.LastId, blockFirstId + params.GetBlockSize());
-                for (int i = blockFirstId; i < blockLastId; ++i) {
+                for (int i : params.GetBlockRange(blockId)) {
                     body(i);
                 }
             };
